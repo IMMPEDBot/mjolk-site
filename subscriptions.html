@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscriptions — Mjölk Cookies</title>
+<meta name="description" content="A tin of warm cookies, on a schedule. Monthly, fortnightly or weekly. 10% off every tin, free same-day delivery, pause or cancel anytime.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <span class="pulse"></span>
+  Order before <strong>2pm</strong> for <strong>same-day Birmingham delivery</strong> · Free over <strong>£150</strong>
+</div>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo">
+    <svg class="dala" viewBox="0 0 64 64"><path fill="#8E2D1F" d="M51 24c-1.5-2.5-4-4-7-4.5L42 14c-.3-.8-1.2-1.2-2-.9-.7.3-1.1 1-.9 1.7l1.2 4.5c-3-.2-6 .3-8.5 1.5l-3-3c-.6-.6-1.6-.6-2.2 0-.6.6-.6 1.6 0 2.2l2.5 2.5c-2 1.5-3.5 3.5-4.3 5.8H17c-2 0-3.5 1.5-3.5 3.5 0 1.2.6 2.3 1.5 3l3 2v8.7c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8v-2.4h12v2.4c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8V35.5c0-2-.7-3.8-1.8-5.3 1.7-.7 3-2 3.7-3.7.4-1 .3-2-.1-2.5z"/><circle cx="46" cy="26" r="1.2" fill="#F0E6D0"/></svg>
+    Mjölk
+  </a>
+  <ul>
+    <li><a href="index.html#shop">The Tin</a></li>
+    <li><a href="gift-tins.html">Gift</a></li>
+    <li><a href="subscriptions.html">Subscriptions</a></li>
+    <li><a href="index.html#fika">On Fika</a></li>
+    <li><a href="our-story.html">Story</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openCart()">Burk <span class="cart-count" data-cart-count>0</span></button>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Page hero -->
+<section class="page-hero">
+  <span class="eyebrow">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 4 4 4 4 8a4 4 0 11-8 0c0-4 2-4 4-8z" fill="#8E2D1F"/></svg>
+    A standing fika. Built into the calendar.
+  </span>
+  <h1>A tin every Tuesday.<br><span class="it">Or every other.</span></h1>
+  <p class="lede">
+    The hardest part of fika is remembering to do it. Subscribers get a tin on a schedule —
+    weekly, fortnightly or monthly — with 10% off every tin and free same-day delivery as
+    standard. Pause, skip, swap flavours or cancel anytime, no fuss.
+  </p>
+  <a href="#plans" class="btn-primary">See plans ↓</a>
+</section>
+
+<!-- How a subscription works -->
+<div class="sub-flow">
+  <div style="text-align:center; max-width: 700px; margin: 0 auto 50px">
+    <span class="section-eyebrow">How it works</span>
+    <h2 class="section-title" style="font-size: clamp(34px, 4vw, 50px)">Set it. <span class="it">Forget it.</span> Eat it.</h2>
+  </div>
+  <div class="sub-flow-grid">
+    <div class="sub-step">
+      <div class="sub-step-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1B3A5B" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+      <h4>Pick your rhythm</h4>
+      <p>Weekly, fortnightly or monthly. Change later if it's too much (or not enough).</p>
+    </div>
+    <div class="sub-step">
+      <div class="sub-step-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1B3A5B" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <h4>Tell us your taste</h4>
+      <p>Pin a favourite, surprise mix, or curator's choice. Skip the Dubai cookie if pistachios are out.</p>
+    </div>
+    <div class="sub-step">
+      <div class="sub-step-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1B3A5B" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h4>We deliver, warm</h4>
+      <p>Same-day to your door across the West Midlands. Or next-day across the UK.</p>
+    </div>
+    <div class="sub-step">
+      <div class="sub-step-icon"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#1B3A5B" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h4>Pause anytime</h4>
+      <p>Going on holiday, moving house, just had your fill — pause or skip in two clicks.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Plans -->
+<section id="plans">
+  <div style="text-align:center; margin-bottom: 60px">
+    <span class="section-eyebrow">The plans</span>
+    <h2 class="section-title">Three <span class="it">cadences.</span></h2>
+    <p class="section-intro" style="margin-left:auto; margin-right:auto">
+      All plans include 10% off every tin, free same-day delivery, and the same hand-baked,
+      mix-and-match cookies as our one-off tins.
+    </p>
+  </div>
+
+  <div class="tier-grid">
+    <!-- Monthly -->
+    <div class="tier-card">
+      <h3>Monthly</h3>
+      <div class="tier-tag">a treat to look forward to</div>
+      <div class="tier-price">£108 <small>/ month</small></div>
+      <p class="tier-sub">£27 per cookie · was £120</p>
+      <ul class="tier-includes">
+        <li>One tin of 4 cookies, every month</li>
+        <li>10% off every tin</li>
+        <li>Free same-day Birmingham delivery</li>
+        <li>Pin a favourite or get a surprise mix</li>
+        <li>Pause, skip or cancel anytime</li>
+        <li>Tuesday delivery as default</li>
+      </ul>
+      <button onclick="submitSubscription(event, 'Monthly')" class="btn-secondary" style="text-align:center; width: 100%; cursor: pointer">Start monthly →</button>
+    </div>
+
+    <!-- Fortnightly (featured) -->
+    <div class="tier-card featured">
+      <span class="featured-tag">Most popular</span>
+      <h3>Fortnightly</h3>
+      <div class="tier-tag">the goldilocks plan</div>
+      <div class="tier-price">£216 <small>/ month</small></div>
+      <p class="tier-sub">Two tins, £27 per cookie · was £240</p>
+      <ul class="tier-includes">
+        <li>Two tins of 4 cookies, every two weeks</li>
+        <li>10% off every tin</li>
+        <li>Free same-day delivery, every time</li>
+        <li>Mix changes by default — keeps it interesting</li>
+        <li>Skip a tin with 24h notice</li>
+        <li>Pause, swap or cancel anytime</li>
+      </ul>
+      <button onclick="submitSubscription(event, 'Fortnightly')" class="btn-primary" style="text-align:center; width: 100%; cursor: pointer">Start fortnightly →</button>
+    </div>
+
+    <!-- Weekly -->
+    <div class="tier-card">
+      <h3>Weekly</h3>
+      <div class="tier-tag">household with serious commitment</div>
+      <div class="tier-price">£432 <small>/ month</small></div>
+      <p class="tier-sub">Four tins, £27 per cookie · was £480</p>
+      <ul class="tier-includes">
+        <li>Four tins of 4 cookies, every week</li>
+        <li>10% off every tin</li>
+        <li>Free same-day delivery, every time</li>
+        <li>Priority access to seasonal specials</li>
+        <li>Skip up to 4 weeks per year</li>
+        <li>One free birthday tin upgrade</li>
+      </ul>
+      <button onclick="submitSubscription(event, 'Weekly')" class="btn-secondary" style="text-align:center; width: 100%; cursor: pointer">Start weekly →</button>
+    </div>
+  </div>
+</section>
+
+<!-- The flexibility section -->
+<section style="background: var(--cream-light); border-top: 1px dashed rgba(27,58,91,.25); border-bottom: 1px dashed rgba(27,58,91,.25)">
+  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start" class="flex-2col">
+    <div>
+      <span class="section-eyebrow">Pause / skip / swap</span>
+      <h2 class="section-title" style="font-size: clamp(32px, 4vw, 46px)">No <span class="it">contract.</span> No fuss.</h2>
+      <p style="font-size: 17px; line-height: 1.7; color: var(--navy-soft); margin-bottom: 20px">
+        Subscriptions on the internet are mostly a trap — three clicks to start, eleven to cancel.
+        Ours aren't. You log in, you click. We don't make you call. We don't ask why. We don't
+        send a sad-eyed retention email. Promise.
+      </p>
+      <p style="font-size: 17px; line-height: 1.7; color: var(--navy-soft)">
+        Going on holiday? Skip the next two tins. Hate pistachios this month? Swap the Dubai
+        cookie out. Want a bigger tin for a friend's birthday? One-click upgrade. The whole
+        thing should feel like having a really easygoing baker on retainer, because that's
+        basically what it is.
+      </p>
+    </div>
+    <div>
+      <div style="background: var(--paper); border-left: 3px solid var(--falu); padding: 28px 32px; border-radius: 2px; margin-bottom: 20px">
+        <div style="font-family: 'Caveat', cursive; font-size: 22px; color: var(--falu); margin-bottom: 6px">Pause</div>
+        <h4 style="font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy); margin-bottom: 8px">Hit pause for up to 12 weeks</h4>
+        <p style="font-size: 14.5px; color: var(--navy-soft); line-height: 1.55">Holiday, hospital, house move, just had enough cookies for a minute. We'll wait.</p>
+      </div>
+      <div style="background: var(--paper); border-left: 3px solid var(--falu); padding: 28px 32px; border-radius: 2px; margin-bottom: 20px">
+        <div style="font-family: 'Caveat', cursive; font-size: 22px; color: var(--falu); margin-bottom: 6px">Skip</div>
+        <h4 style="font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy); margin-bottom: 8px">Skip a single delivery</h4>
+        <p style="font-size: 14.5px; color: var(--navy-soft); line-height: 1.55">24h notice and your next tin moves to the one after. No charge.</p>
+      </div>
+      <div style="background: var(--paper); border-left: 3px solid var(--falu); padding: 28px 32px; border-radius: 2px">
+        <div style="font-family: 'Caveat', cursive; font-size: 22px; color: var(--falu); margin-bottom: 6px">Swap</div>
+        <h4 style="font-family: 'Fraunces', serif; font-size: 19px; color: var(--navy); margin-bottom: 8px">Change the mix</h4>
+        <p style="font-size: 14.5px; color: var(--navy-soft); line-height: 1.55">Pin a favourite, exclude an allergen, request a seasonal — anytime, no fee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sub-specific FAQ -->
+<section style="background: var(--cream)">
+  <div style="text-align:center; margin-bottom: 50px">
+    <span class="section-eyebrow">Just in case</span>
+    <h2 class="section-title">Subscription <span class="it">questions.</span></h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-q">When does my first tin arrive? <span class="plus">+</span></div><div class="faq-a">Subscriptions ship the next available delivery day after sign-up. For Birmingham/West Midlands postcodes that's usually the next Tuesday — or earlier if you sign up before 2pm. We'll email you the exact day with your confirmation.</div></div>
+    <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-q">Can I change my delivery day? <span class="plus">+</span></div><div class="faq-a">Yes — Tuesday is the default but you can pick any weekday at sign-up or change it later in your account. Same-day cutoff is 2pm on the day, just like one-off orders.</div></div>
+    <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-q">What about Christmas, Easter, bank holidays? <span class="plus">+</span></div><div class="faq-a">We deliver six days a week (Mon–Sat) but we close on the four UK bank holidays in spring/summer plus a fortnight at Christmas. Subscriptions automatically shift to the next working day, and we always email a heads-up.</div></div>
+    <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-q">Do I get a discount on the first tin? <span class="plus">+</span></div><div class="faq-a">The 10% subscriber discount applies from your first tin, so yes. If you've also got a £10 first-tin code from the newsletter, that stacks for the first delivery only.</div></div>
+    <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-q">Can I gift a subscription? <span class="plus">+</span></div><div class="faq-a">Yes — pick the recipient's address at checkout and choose a duration (1, 3, 6, or 12 months). They'll get a card with the first tin. We don't auto-renew gifted subscriptions, so they won't be left with a recurring charge.</div></div>
+    <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-q">How do I cancel? <span class="plus">+</span></div><div class="faq-a">Log into your account, hit "cancel subscription," that's it. No retention call, no winback discount, no "are you sure?" three times. We'd much rather you came back when you're ready.</div></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="color: var(--cream-light); margin-bottom: 16px; display: inline-flex">
+        <svg class="dala" viewBox="0 0 64 64"><path fill="#E2A93B" d="M51 24c-1.5-2.5-4-4-7-4.5L42 14c-.3-.8-1.2-1.2-2-.9-.7.3-1.1 1-.9 1.7l1.2 4.5c-3-.2-6 .3-8.5 1.5l-3-3c-.6-.6-1.6-.6-2.2 0-.6.6-.6 1.6 0 2.2l2.5 2.5c-2 1.5-3.5 3.5-4.3 5.8H17c-2 0-3.5 1.5-3.5 3.5 0 1.2.6 2.3 1.5 3l3 2v8.7c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8v-2.4h12v2.4c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8V35.5c0-2-.7-3.8-1.8-5.3 1.7-.7 3-2 3.7-3.7.4-1 .3-2-.1-2.5z"/></svg>
+        Mjölk
+      </a>
+      <div class="footer-tag">Warm cookies, baked today, on your doorstep by fika.</div>
+      <div style="font-size: 13px; opacity: .55; line-height: 1.6">Mjölk Cookies Co. Ltd<br>Floodgate Studios, Floodgate Street<br>Digbeth, Birmingham B5 5SL<br>Hygiene Rating: ★★★★★ (5/5)</div>
+    </div>
+    <div><h5>Shop</h5><ul><li><a href="index.html#shop">Build a tin</a></li><li><a href="gift-tins.html">Gift tins</a></li><li><a href="corporate.html">Corporate fika</a></li><li><a href="subscriptions.html">Subscriptions</a></li></ul></div>
+    <div><h5>Help</h5><ul><li><a href="index.html#faq">FAQ</a></li><li><a href="delivery.html">Delivery zones</a></li><li><a href="allergens.html">Allergens & ingredients</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h5>Co.</h5><ul><li><a href="index.html#fika">On fika</a></li><li><a href="our-story.html">Our story</a></li><li><a href="sustainability.html">Sustainability</a></li><li><a href="wholesale.html">Wholesale</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mjölk Cookies Co. Ltd · Company No. 14839201 · VAT GB 423 891 776</div>
+    <div><a href="#" style="color: rgba(240,230,208,.55); margin-right: 14px">Privacy</a><a href="#" style="color: rgba(240,230,208,.55); margin-right: 14px">Terms</a><a href="#" style="color: rgba(240,230,208,.55)">Cookie policy <em>(the boring kind)</em></a></div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <div class="sticky-cta-left"><div class="label">Your tin</div><div class="price" id="sticky-price">£0.00</div></div>
+  <a href="index.html#shop">Build a tin →</a>
+</div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-head"><h3>Your tin</h3><button class="cart-close" onclick="closeCart()">×</button></div>
+  <div class="cart-body" id="cart-body"></div>
+  <div class="cart-foot">
+    <div class="row"><span>Subtotal</span><span id="cart-subtotal">£0.00</span></div>
+    <div class="row"><span>Delivery</span><span id="cart-delivery">£4.50</span></div>
+    <div class="row total"><span>Total</span><span id="cart-total">£0.00</span></div>
+    <button id="cart-checkout-btn" onclick="checkout()">Checkout →</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+<style>
+@media(max-width:780px){ .flex-2col{ grid-template-columns: 1fr !important } }
+</style>
+</body>
+</html>

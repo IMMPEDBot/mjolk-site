@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gift Tins — Mjölk Cookies</title>
+<meta name="description" content="Send a tin of warm hand-baked cookies anywhere in Birmingham, the West Midlands or across the UK. Free handwritten note, keepsake tin, same-day delivery available.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,900&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="topbar">
+  <span class="pulse"></span>
+  Order before <strong>2pm</strong> for <strong>same-day Birmingham delivery</strong> · Free over <strong>£150</strong>
+</div>
+
+<nav class="site-nav">
+  <a href="index.html" class="logo">
+    <svg class="dala" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path fill="#8E2D1F" d="M51 24c-1.5-2.5-4-4-7-4.5L42 14c-.3-.8-1.2-1.2-2-.9-.7.3-1.1 1-.9 1.7l1.2 4.5c-3-.2-6 .3-8.5 1.5l-3-3c-.6-.6-1.6-.6-2.2 0-.6.6-.6 1.6 0 2.2l2.5 2.5c-2 1.5-3.5 3.5-4.3 5.8H17c-2 0-3.5 1.5-3.5 3.5 0 1.2.6 2.3 1.5 3l3 2v8.7c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8v-2.4h12v2.4c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8V35.5c0-2-.7-3.8-1.8-5.3 1.7-.7 3-2 3.7-3.7.4-1 .3-2-.1-2.5z"/><circle cx="46" cy="26" r="1.2" fill="#F0E6D0"/></svg>
+    Mjölk
+  </a>
+  <ul>
+    <li><a href="index.html#shop">The Tin</a></li>
+    <li><a href="gift-tins.html">Gift</a></li>
+    <li><a href="subscriptions.html">Subscriptions</a></li>
+    <li><a href="index.html#fika">On Fika</a></li>
+    <li><a href="our-story.html">Story</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openCart()">Burk <span class="cart-count" data-cart-count>0</span></button>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Page hero -->
+<section class="page-hero">
+  <span class="eyebrow">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c2 4 4 4 4 8a4 4 0 11-8 0c0-4 2-4 4-8z" fill="#8E2D1F"/></svg>
+    A tin says what flowers can't.
+  </span>
+  <h1>Send a tin.<br>Mark a <span class="it">moment.</span></h1>
+  <p class="lede">
+    Birthdays. Apologies. Welcomes. Just-becauses. We deliver warm cookies and a handwritten note
+    to any address in the West Midlands the same day — and across the UK by next morning.
+  </p>
+  <a href="#bundles" class="btn-primary">See gift bundles ↓</a>
+</section>
+
+<!-- How gifting works -->
+<section style="background: var(--cream-light); border-top: 1px dashed rgba(27,58,91,.25); border-bottom: 1px dashed rgba(27,58,91,.25)">
+  <div style="text-align:center; margin-bottom: 60px">
+    <span class="section-eyebrow">How it works</span>
+    <h2 class="section-title">Gifting <span class="it">in three steps.</span></h2>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">i</div><h4>Pick a tin</h4><p>Curated bundle below or build your own from the four flavours.</p></div>
+    <div class="step"><div class="step-num">ii</div><h4>Add their address</h4><p>Their delivery address — not yours — plus a handwritten note we'll post inside the tin.</p></div>
+    <div class="step"><div class="step-num">iii</div><h4>We deliver</h4><p>Same-day across the West Midlands, next-day across the UK. We text them on dispatch.</p></div>
+  </div>
+</section>
+
+<!-- Curated bundles -->
+<section id="bundles">
+  <div style="text-align:center; margin-bottom: 60px">
+    <span class="section-eyebrow">Curated bundles</span>
+    <h2 class="section-title">For when <span class="it">words won't do.</span></h2>
+    <p class="section-intro" style="margin-left:auto; margin-right:auto">
+      Pre-built tins for the occasions we get asked about most. All include a free handwritten note
+      and keepsake tin. Or skip these and <a href="index.html#shop" style="color: var(--falu); font-weight: 500">build your own →</a>
+    </p>
+  </div>
+
+  <div class="gift-grid">
+    <!-- The Birthday Burk -->
+    <div class="gift-card">
+      <span class="gift-tag">most popular</span>
+      <div class="gift-card-art">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="125" rx="80" ry="8" fill="rgba(15,36,56,.2)"/>
+          <rect x="35" y="60" width="130" height="60" rx="3" fill="#8E2D1F"/>
+          <rect x="35" y="55" width="130" height="10" rx="2" fill="#A53A2C"/>
+          <rect x="35" y="80" width="130" height="14" fill="#5C1B12"/>
+          <text x="100" y="91" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="700" font-size="9" fill="#E2A93B" letter-spacing="1">MJÖLK</text>
+          <!-- candle -->
+          <rect x="97" y="40" width="6" height="20" fill="#F0E6D0"/>
+          <ellipse cx="100" cy="38" rx="3" ry="6" fill="#E2A93B"/>
+          <ellipse cx="100" cy="36" rx="1.5" ry="3" fill="#A53A2C"/>
+        </svg>
+      </div>
+      <h3>The Birthday Burk</h3>
+      <div class="occasion">for the one who has everything</div>
+      <p class="gift-desc">Eight cookies, two of each flavour, including the Dubai chocolate. Comes with a free handwritten birthday note and matchbook of "happy birthday" candles for the brave.</p>
+      <div class="gift-includes"><strong>Inside</strong>2× Original · 2× Brownie · 2× Red Velvet · 2× Dubai · candles · note</div>
+      <div class="gift-footer">
+        <div class="gift-price">£245</div>
+        <button class="btn-primary" onclick="addBundle('birthday')">Send →</button>
+      </div>
+    </div>
+
+    <!-- The Sorry Tin -->
+    <div class="gift-card">
+      <span class="gift-tag">we've all been there</span>
+      <div class="gift-card-art">
+        <svg viewBox="0 0 200 140">
+          <ellipse cx="100" cy="125" rx="80" ry="8" fill="rgba(15,36,56,.2)"/>
+          <rect x="35" y="60" width="130" height="60" rx="3" fill="#8E2D1F"/>
+          <rect x="35" y="55" width="130" height="10" rx="2" fill="#A53A2C"/>
+          <rect x="35" y="80" width="130" height="14" fill="#5C1B12"/>
+          <text x="100" y="91" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="700" font-size="9" fill="#E2A93B" letter-spacing="1">MJÖLK</text>
+          <!-- envelope on top -->
+          <rect x="60" y="38" width="80" height="22" fill="#F0E6D0" stroke="#1B3A5B" stroke-width="1"/>
+          <path d="M60 38 L100 55 L140 38" fill="none" stroke="#1B3A5B" stroke-width="1"/>
+        </svg>
+      </div>
+      <h3>The Sorry Tin</h3>
+      <div class="occasion">an apology in 130g of dough</div>
+      <p class="gift-desc">Four cookies: the comforting ones. Two Originals and two Red Velvets. Comes with a blank card so you can write the actually-difficult bit yourself. We'll just deliver it.</p>
+      <div class="gift-includes"><strong>Inside</strong>2× Original · 2× Red Velvet · blank card · note</div>
+      <div class="gift-footer">
+        <div class="gift-price">£124</div>
+        <button class="btn-primary" onclick="addBundle('sorry')">Send →</button>
+      </div>
+    </div>
+
+    <!-- The Welcome Tin -->
+    <div class="gift-card">
+      <span class="gift-tag">new home / new baby</span>
+      <div class="gift-card-art">
+        <svg viewBox="0 0 200 140">
+          <ellipse cx="100" cy="125" rx="80" ry="8" fill="rgba(15,36,56,.2)"/>
+          <rect x="35" y="60" width="130" height="60" rx="3" fill="#8E2D1F"/>
+          <rect x="35" y="55" width="130" height="10" rx="2" fill="#A53A2C"/>
+          <rect x="35" y="80" width="130" height="14" fill="#5C1B12"/>
+          <text x="100" y="91" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="700" font-size="9" fill="#E2A93B" letter-spacing="1">MJÖLK</text>
+          <!-- little house on top -->
+          <polygon points="80,35 100,20 120,35" fill="#1B3A5B"/>
+          <rect x="85" y="35" width="30" height="22" fill="#34526E"/>
+          <rect x="96" y="44" width="8" height="13" fill="#E2A93B"/>
+        </svg>
+      </div>
+      <h3>The Welcome</h3>
+      <div class="occasion">housewarming · new baby · new job</div>
+      <p class="gift-desc">Twelve cookies — three of each — for the people who've just landed somewhere new and won't stop receiving plants. The tin keeps. The cookies don't.</p>
+      <div class="gift-includes"><strong>Inside</strong>3× of every flavour (12 total) · note</div>
+      <div class="gift-footer">
+        <div class="gift-price">£365</div>
+        <button class="btn-primary" onclick="addBundle('welcome')">Send →</button>
+      </div>
+    </div>
+
+    <!-- The Thinking of You -->
+    <div class="gift-card">
+      <span class="gift-tag">no occasion needed</span>
+      <div class="gift-card-art">
+        <svg viewBox="0 0 200 140">
+          <ellipse cx="100" cy="125" rx="80" ry="8" fill="rgba(15,36,56,.2)"/>
+          <rect x="35" y="60" width="130" height="60" rx="3" fill="#8E2D1F"/>
+          <rect x="35" y="55" width="130" height="10" rx="2" fill="#A53A2C"/>
+          <rect x="35" y="80" width="130" height="14" fill="#5C1B12"/>
+          <text x="100" y="91" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="700" font-size="9" fill="#E2A93B" letter-spacing="1">MJÖLK</text>
+          <!-- heart on top -->
+          <path d="M100 50 C 95 42, 80 42, 80 30 C 80 22, 90 18, 100 28 C 110 18, 120 22, 120 30 C 120 42, 105 42, 100 50 Z" fill="#E2A93B"/>
+        </svg>
+      </div>
+      <h3>The Thinking of You</h3>
+      <div class="occasion">a tin in lieu of a phone call</div>
+      <p class="gift-desc">Four cookies, your choice or ours. For the friend you keep meaning to text. The colleague who lost a parent. The one going through it. Small but warm.</p>
+      <div class="gift-includes"><strong>Inside</strong>4× cookies, surprise mix · note</div>
+      <div class="gift-footer">
+        <div class="gift-price">£124</div>
+        <button class="btn-primary" onclick="addBundle('thinking')">Send →</button>
+      </div>
+    </div>
+
+    <!-- The Big One -->
+    <div class="gift-card">
+      <span class="gift-tag">team / big celebration</span>
+      <div class="gift-card-art">
+        <svg viewBox="0 0 200 140">
+          <ellipse cx="100" cy="125" rx="80" ry="8" fill="rgba(15,36,56,.2)"/>
+          <rect x="25" y="60" width="150" height="60" rx="3" fill="#8E2D1F"/>
+          <rect x="25" y="55" width="150" height="10" rx="2" fill="#A53A2C"/>
+          <rect x="25" y="80" width="150" height="14" fill="#5C1B12"/>
+          <text x="100" y="91" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="700" font-size="10" fill="#E2A93B" letter-spacing="1">MJÖLK · GRAND</text>
+          <!-- crown on top -->
+          <polygon points="80,55 85,40 95,50 100,35 105,50 115,40 120,55" fill="#E2A93B"/>
+        </svg>
+      </div>
+      <h3>The Grand Burk</h3>
+      <div class="occasion">team of 8–10 · serious celebration</div>
+      <p class="gift-desc">Twenty cookies, five of each, in our largest tin. Engagement, promotion, retirement, baby shower, big bonus. Built to be opened in a meeting room and finished on the way home.</p>
+      <div class="gift-includes"><strong>Inside</strong>5× of every flavour (20 total) · large tin · note</div>
+      <div class="gift-footer">
+        <div class="gift-price">£605</div>
+        <button class="btn-primary" onclick="addBundle('grand')">Send →</button>
+      </div>
+    </div>
+
+    <!-- Build your own -->
+    <div class="gift-card" style="background: var(--navy-deep); color: var(--cream-light); border-color: var(--navy-deep)">
+      <div class="gift-card-art">
+        <svg viewBox="0 0 200 140">
+          <ellipse cx="100" cy="125" rx="80" ry="8" fill="rgba(15,36,56,.4)"/>
+          <rect x="35" y="60" width="130" height="60" rx="3" fill="#8E2D1F" stroke="#E2A93B" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="35" y="55" width="130" height="10" rx="2" fill="#A53A2C"/>
+          <text x="100" y="95" text-anchor="middle" font-family="Caveat, cursive" font-size="22" fill="#E2A93B">your tin →</text>
+        </svg>
+      </div>
+      <h3 style="color: var(--cream-light)">Build your own</h3>
+      <div class="occasion" style="color: var(--mustard)">they'll love whatever you pick</div>
+      <p class="gift-desc" style="color: rgba(240,230,208,.78)">Hand-pick your own combination of the four flavours, minimum four cookies. Same handwritten-note treatment, same warm same-day delivery.</p>
+      <div class="gift-includes" style="border-color: rgba(240,230,208,.2); color: rgba(240,230,208,.85)"><strong style="color: var(--mustard)">Inside</strong>You decide. From 4 cookies up.</div>
+      <div class="gift-footer">
+        <div class="gift-price" style="color: var(--mustard)">from £124</div>
+        <a href="index.html#shop" class="btn-primary" style="background: var(--mustard); color: var(--navy-deep)">Build →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Personal note feature -->
+<section style="background: var(--cream-deep); background-image: var(--grain); background-blend-mode: multiply">
+  <div class="gift-note-mockup">
+    <div>
+      <span class="section-eyebrow">The handwritten bit</span>
+      <h2 class="section-title" style="margin-bottom: 18px">Free with <span class="it">every gift.</span></h2>
+      <p style="font-size: 17px; line-height: 1.65; color: var(--navy-soft); margin-bottom: 20px">
+        At checkout you'll get a small text box and 80 characters. Whatever you write, we write —
+        actually by hand, on a Mjölk postcard, slipped into the tin. We will not autocorrect your
+        in-jokes, will not soften your sentiments, and will absolutely write rude things if asked.
+      </p>
+      <p style="font-size: 14px; line-height: 1.6; color: var(--navy-soft); font-style: italic">
+        Want longer than 80 characters? Send it to <a href="mailto:notes@mjolk.co.uk" style="color: var(--falu)">notes@mjolk.co.uk</a> with your order number and we'll handwrite up to a full A6 card. Free.
+      </p>
+    </div>
+    <div class="note-card">
+      <div class="note-deco">~</div>
+      <p>Sam — heard about Mum.<br>Eat the brownie one first,<br>it's the best.<br>Call when you can. ♥</p>
+      <div class="note-sign">— Em x</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="logo" style="color: var(--cream-light); margin-bottom: 16px; display: inline-flex">
+        <svg class="dala" viewBox="0 0 64 64"><path fill="#E2A93B" d="M51 24c-1.5-2.5-4-4-7-4.5L42 14c-.3-.8-1.2-1.2-2-.9-.7.3-1.1 1-.9 1.7l1.2 4.5c-3-.2-6 .3-8.5 1.5l-3-3c-.6-.6-1.6-.6-2.2 0-.6.6-.6 1.6 0 2.2l2.5 2.5c-2 1.5-3.5 3.5-4.3 5.8H17c-2 0-3.5 1.5-3.5 3.5 0 1.2.6 2.3 1.5 3l3 2v8.7c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8v-2.4h12v2.4c0 1 .8 1.8 1.8 1.8h3.5c1 0 1.8-.8 1.8-1.8V35.5c0-2-.7-3.8-1.8-5.3 1.7-.7 3-2 3.7-3.7.4-1 .3-2-.1-2.5z"/></svg>
+        Mjölk
+      </a>
+      <div class="footer-tag">Warm cookies, baked today, on your doorstep by fika.</div>
+      <div style="font-size: 13px; opacity: .55; line-height: 1.6">Mjölk Cookies Co. Ltd<br>Floodgate Studios, Floodgate Street<br>Digbeth, Birmingham B5 5SL<br>Hygiene Rating: ★★★★★ (5/5)</div>
+    </div>
+    <div><h5>Shop</h5><ul><li><a href="index.html#shop">Build a tin</a></li><li><a href="gift-tins.html">Gift tins</a></li><li><a href="corporate.html">Corporate fika</a></li><li><a href="subscriptions.html">Subscriptions</a></li></ul></div>
+    <div><h5>Help</h5><ul><li><a href="index.html#faq">FAQ</a></li><li><a href="delivery.html">Delivery zones</a></li><li><a href="allergens.html">Allergens & ingredients</a></li><li><a href="contact.html">Contact us</a></li></ul></div>
+    <div><h5>Co.</h5><ul><li><a href="index.html#fika">On fika</a></li><li><a href="our-story.html">Our story</a></li><li><a href="sustainability.html">Sustainability</a></li><li><a href="wholesale.html">Wholesale</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Mjölk Cookies Co. Ltd · Company No. 14839201 · VAT GB 423 891 776</div>
+    <div><a href="#" style="color: rgba(240,230,208,.55); margin-right: 14px">Privacy</a><a href="#" style="color: rgba(240,230,208,.55); margin-right: 14px">Terms</a><a href="#" style="color: rgba(240,230,208,.55)">Cookie policy <em>(the boring kind)</em></a></div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <div class="sticky-cta-left"><div class="label">Your tin</div><div class="price" id="sticky-price">£0.00</div></div>
+  <a href="index.html#shop">Build a tin →</a>
+</div>
+
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-head"><h3>Your tin</h3><button class="cart-close" onclick="closeCart()">×</button></div>
+  <div class="cart-body" id="cart-body"></div>
+  <div class="cart-foot">
+    <div class="row"><span>Subtotal</span><span id="cart-subtotal">£0.00</span></div>
+    <div class="row"><span>Delivery</span><span id="cart-delivery">£4.50</span></div>
+    <div class="row total"><span>Total</span><span id="cart-total">£0.00</span></div>
+    <button id="cart-checkout-btn" onclick="checkout()">Checkout →</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+<script>
+  // Add a curated bundle to the cart and open the cart drawer
+  function addBundle(type){
+    const bundles = {
+      birthday:  { original:2, brownie:2, redvelvet:2, dubai:2 },
+      sorry:     { original:2, brownie:0, redvelvet:2, dubai:0 },
+      welcome:   { original:3, brownie:3, redvelvet:3, dubai:3 },
+      thinking:  { original:1, brownie:1, redvelvet:1, dubai:1 },
+      grand:     { original:5, brownie:5, redvelvet:5, dubai:5 }
+    };
+    const bundleNames = {
+      birthday: 'The Birthday Burk', sorry: 'The Sorry Tin', welcome: 'The Welcome',
+      thinking: 'The Thinking of You', grand: 'The Grand Burk'
+    };
+    const b = bundles[type];
+    if (!b) return;
+    Object.keys(b).forEach(sku => {
+      cart[sku] = (cart[sku]||0) + b[sku];
+    });
+    saveCart(cart);
+    showToast(`${bundleNames[type]} added to your tin`);
+    renderAll();
+    setTimeout(openCart, 300);
+  }
+</script>
+</body>
+</html>
