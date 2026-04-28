@@ -18,7 +18,6 @@ const NAMES = {
 const STORAGE_KEY = 'mjolk_cart_v1';
 const FREE_DELIVERY_THRESHOLD = 150;
 const DELIVERY = 4.50;
-const MIN_COOKIES = 4;
 
 /* ───────── Cart state ───────── */
 function loadCart(){
@@ -133,11 +132,7 @@ function renderAll(){
   if (ctaBtn) {
     if (count === 0) {
       ctaBtn.disabled = true;
-      ctaBtn.textContent = `Pick at least ${MIN_COOKIES} cookies →`;
-    } else if (count < MIN_COOKIES) {
-      ctaBtn.disabled = true;
-      const need = MIN_COOKIES - count;
-      ctaBtn.textContent = `Add ${need} more cookie${need===1?'':'s'} →`;
+      ctaBtn.textContent = 'Pick a cookie →';
     } else {
       ctaBtn.disabled = false;
       ctaBtn.textContent = `Send my tin · £${total.toFixed(2)} →`;
@@ -179,8 +174,6 @@ function renderAll(){
   if (cBtn) {
     if (count === 0) {
       cBtn.disabled = true; cBtn.textContent = 'Your tin is empty';
-    } else if (count < MIN_COOKIES) {
-      cBtn.disabled = true; cBtn.textContent = `Need ${MIN_COOKIES - count} more cookie(s)`;
     } else {
       cBtn.disabled = false; cBtn.textContent = `Checkout · £${total.toFixed(2)} →`;
     }
@@ -261,8 +254,8 @@ function nextTuesday(){
 /* ───────── Checkout (demo) ───────── */
 function checkout(){
   const count = totalCount();
-  if (count < MIN_COOKIES) {
-    showToast(`Add ${MIN_COOKIES - count} more cookie(s) first.`);
+  if (count === 0) {
+    showToast('Your tin is empty — pick a cookie first.');
     return;
   }
   showToast(`Heading to checkout · £${grandTotal().toFixed(2)}…`);

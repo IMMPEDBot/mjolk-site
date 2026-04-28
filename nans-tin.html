@@ -1084,7 +1084,7 @@
   <div class="tin-builder">
     <div>
       <h3>Build your <span class="it">tin.</span></h3>
-      <p class="builder-hint">Mix and match. Minimum 4 cookies. Free London delivery over £30.</p>
+      <p class="builder-hint">Mix and match — order one or a dozen. Free London delivery over £30.</p>
       <div class="tin-summary" id="tin-summary">
         <div class="empty-line">Your tin's empty — pick a cookie above to start.</div>
       </div>
@@ -1427,10 +1427,7 @@
     const ctaBtn = document.getElementById('builder-cta');
     if (count === 0) {
       ctaBtn.disabled = true;
-      ctaBtn.textContent = 'Pick at least 4 cookies →';
-    } else if (count < 4) {
-      ctaBtn.disabled = true;
-      ctaBtn.textContent = `Add ${4-count} more cookie${count===3?'':'s'} →`;
+      ctaBtn.textContent = 'Pick a cookie →';
     } else {
       ctaBtn.disabled = false;
       ctaBtn.textContent = `Send my tin · £${total.toFixed(2)} →`;
