@@ -1272,3 +1272,126 @@ footer{
   color: var(--navy); margin-bottom: 16px;
   padding-bottom: 12px; border-bottom: 1px dashed rgba(27,58,91,.25);
 }
+
+/* ════════════════════════════════════════════════════════════════
+   DATE-AWARE THEMES
+   theme-init.js sets data-theme on <html> based on the calendar.
+   These rules override the brand accent palette + topbar treatment
+   for each occasion. Navy + cream stay as anchors.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Shared themed-topbar treatment (border accent + pulse colour) */
+html[data-theme] .topbar{
+  border-bottom: 2px solid var(--mustard);
+}
+
+/* ───── Ramadan — deep emerald + warm gold ───── */
+html[data-theme="ramadan"]{
+  --mustard: #D4A648;
+  --mustard-deep: #9F7A26;
+}
+html[data-theme="ramadan"] .topbar{
+  background: #0E3F2C; color: #F0E6D0;
+}
+html[data-theme="ramadan"] .topbar strong{ color: #D4A648 }
+html[data-theme="ramadan"] h1.headline .it,
+html[data-theme="ramadan"] h1.headline .swash{ color: #0E6B47 }
+html[data-theme="ramadan"] h1.headline .fika-mark::after{ background: #D4A648 }
+html[data-theme="ramadan"] .eyebrow{ color: #0E6B47 }
+html[data-theme="ramadan"] .eyebrow svg path{ fill: #0E6B47 }
+
+/* ───── Eid — celebratory gold + rose ───── */
+html[data-theme="eid"]{
+  --mustard: #D8A636;
+  --mustard-deep: #A07A20;
+}
+html[data-theme="eid"] .topbar{
+  background: linear-gradient(90deg, #2D1A2E 0%, #3D1F2A 100%); color: #F4E1A8;
+}
+html[data-theme="eid"] .topbar strong{ color: #E8B4C0 }
+html[data-theme="eid"] h1.headline .it{ color: #B8497A }
+html[data-theme="eid"] h1.headline .swash{ color: #C8941E }
+html[data-theme="eid"] h1.headline .fika-mark::after{ background: #D8A636 }
+html[data-theme="eid"] .eyebrow{ color: #B8497A }
+html[data-theme="eid"] .eyebrow svg path{ fill: #B8497A }
+
+/* ───── Valentine's — deep rose + soft pink ───── */
+html[data-theme="valentine"]{
+  --mustard: #E8B4C0;
+  --mustard-deep: #B8497A;
+  --falu: #B83A5B;
+}
+html[data-theme="valentine"] .topbar{
+  background: #5A1A2D; color: #FCE8EE;
+}
+html[data-theme="valentine"] .topbar strong{ color: #E8B4C0 }
+html[data-theme="valentine"] h1.headline .it{ color: #B83A5B }
+html[data-theme="valentine"] h1.headline .swash{ color: #B83A5B }
+html[data-theme="valentine"] h1.headline .fika-mark::after{ background: #E8B4C0 }
+html[data-theme="valentine"] .eyebrow{ color: #B83A5B }
+html[data-theme="valentine"] .eyebrow svg path{ fill: #B83A5B }
+html[data-theme="valentine"] .hero::before{
+  background: radial-gradient(circle, rgba(184,58,91,.28), transparent 65%);
+}
+
+/* ───── Easter / Påsk — daffodil + pastel pink ───── */
+html[data-theme="easter"]{
+  --mustard: #E5C04A;
+  --mustard-deep: #B8941E;
+}
+html[data-theme="easter"] .topbar{
+  background: #2C5F3F; color: #FBF4E1;
+}
+html[data-theme="easter"] .topbar strong{ color: #E5C04A }
+html[data-theme="easter"] h1.headline .it{ color: #C95F7B }
+html[data-theme="easter"] h1.headline .swash{ color: #2C5F3F }
+html[data-theme="easter"] h1.headline .fika-mark::after{ background: #E5C04A }
+html[data-theme="easter"] .eyebrow{ color: #C95F7B }
+html[data-theme="easter"] .eyebrow svg path{ fill: #C95F7B }
+
+/* ───── Black Friday — inverted dark + electric mustard ───── */
+html[data-theme="blackfriday"]{
+  --mustard: #FFD23F;
+  --mustard-deep: #C49A1E;
+}
+html[data-theme="blackfriday"] body{ background: #0A0A0A; color: #F0E6D0 }
+html[data-theme="blackfriday"] .topbar{
+  background: #000; color: #FFD23F;
+  font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+}
+html[data-theme="blackfriday"] .topbar strong{ color: #fff }
+html[data-theme="blackfriday"] nav.site-nav{
+  background: #0F0F0F; border-bottom-color: rgba(255,210,63,.25);
+}
+html[data-theme="blackfriday"] nav.site-nav .logo{ color: #FFD23F }
+html[data-theme="blackfriday"] nav.site-nav ul a{ color: #F0E6D0 }
+html[data-theme="blackfriday"] nav.site-nav ul a.is-active{ color: #FFD23F }
+html[data-theme="blackfriday"] h1.headline{ color: #F0E6D0 }
+html[data-theme="blackfriday"] h1.headline .it{ color: #FFD23F }
+html[data-theme="blackfriday"] h1.headline .swash{ color: #FFD23F }
+html[data-theme="blackfriday"] h1.headline .fika-mark::after{ background: #FFD23F }
+html[data-theme="blackfriday"] .eyebrow{ color: #FFD23F }
+html[data-theme="blackfriday"] .eyebrow svg path{ fill: #FFD23F }
+html[data-theme="blackfriday"] .lede{ color: rgba(240,230,208,.78) }
+html[data-theme="blackfriday"] .hero::before{
+  background: radial-gradient(circle, rgba(255,210,63,.2), transparent 65%);
+}
+
+/* ───── Jul / Christmas — Jul red + green + gold ───── */
+html[data-theme="jul"]{
+  --mustard: #E2A93B;
+  --mustard-deep: #B8841E;
+  --falu: #A82920;
+}
+html[data-theme="jul"] .topbar{
+  background: #0F4A28; color: #F4E1A8;
+}
+html[data-theme="jul"] .topbar strong{ color: #E2A93B }
+html[data-theme="jul"] h1.headline .it{ color: #A82920 }
+html[data-theme="jul"] h1.headline .swash{ color: #1F6E3D }
+html[data-theme="jul"] h1.headline .fika-mark::after{ background: #E2A93B }
+html[data-theme="jul"] .eyebrow{ color: #1F6E3D }
+html[data-theme="jul"] .eyebrow svg path{ fill: #A82920 }
+html[data-theme="jul"] .hero::before{
+  background: radial-gradient(circle, rgba(168,41,32,.22), transparent 65%);
+}

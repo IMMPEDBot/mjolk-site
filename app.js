@@ -285,8 +285,61 @@ function highlightActiveNav(){
   });
 }
 
+/* ───────── Date-aware theming (content) ─────────
+   theme-init.js sets data-theme + window.MJOLK_THEME synchronously
+   in <head>. Here we swap copy on the topbar + homepage hero eyebrow
+   to match the active occasion. CSS overrides handle the palette. */
+const THEME_CONTENT = {
+  ramadan: {
+    topbar: 'Ramadan Mubarak — iftar tins delivered before maghrib · Same-day Birmingham',
+    eyebrow: 'Sweet endings to your iftar — sealed warm, sent before sundown.'
+  },
+  eid: {
+    topbar: 'Eid Mubarak — celebratory tins for the family table · Order before 2pm',
+    eyebrow: 'Eid Mubarak — warm cookies for warm gatherings.'
+  },
+  valentine: {
+    topbar: "Order by Feb 13 for Valentine's same-day delivery · Birmingham only",
+    eyebrow: 'Cookies for the people you love — sealed warm, on their doorstep by fika.'
+  },
+  easter: {
+    topbar: 'Glad Påsk — order by Easter Saturday for Sunday delivery · Free over £150',
+    eyebrow: 'Glad Påsk — cookies wrapped like Easter feathers, sent same-day.'
+  },
+  blackfriday: {
+    topbar: 'BLACK FRIDAY weekend — our biggest gift-tin push of the year · Bake slots fill fast',
+    eyebrow: 'The biggest tin order weekend of the year — slots fill quickly.'
+  },
+  jul: {
+    topbar: 'God Jul — order by Dec 23 for Christmas Eve delivery · Same-day Birmingham',
+    eyebrow: 'God Jul — fresh from the oven, by the fire, on your doorstep.'
+  }
+};
+
+function applyThemeContent(){
+  const theme = window.MJOLK_THEME;
+  if (!theme || !THEME_CONTENT[theme]) return;
+  const c = THEME_CONTENT[theme];
+
+  // Topbar — preserve the leading pulse dot, replace the message
+  const topbar = document.querySelector('.topbar');
+  if (topbar && c.topbar) {
+    topbar.innerHTML = '<span class="pulse"></span> ' + c.topbar;
+  }
+
+  // Hero eyebrow on homepage — preserve the leading SVG icon, replace text
+  const eyebrow = document.querySelector('.hero .eyebrow');
+  if (eyebrow && c.eyebrow) {
+    const icon = eyebrow.querySelector('svg');
+    eyebrow.innerHTML = '';
+    if (icon) eyebrow.appendChild(icon);
+    eyebrow.appendChild(document.createTextNode(' ' + c.eyebrow));
+  }
+}
+
 /* ───────── Init ───────── */
 document.addEventListener('DOMContentLoaded', () => {
+  applyThemeContent();
   highlightActiveNav();
   renderAll();
 
