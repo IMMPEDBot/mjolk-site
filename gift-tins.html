@@ -96,10 +96,10 @@
       </div>
       <h3>The Birthday Burk</h3>
       <div class="occasion">for the one who has everything</div>
-      <p class="gift-desc">Eight cookies, two of each flavour, including the Dubai chocolate. Comes with a free handwritten birthday note and matchbook of "happy birthday" candles for the brave.</p>
-      <div class="gift-includes"><strong>Inside</strong>2× Original · 2× Brownie · 2× Red Velvet · 2× Dubai · candles · note</div>
+      <p class="gift-desc">Four cookies, one of each flavour, including the Dubai chocolate. Comes with a free handwritten birthday note and matchbook of "happy birthday" candles for the brave.</p>
+      <div class="gift-includes"><strong>Inside</strong>1× Original · 1× Brownie · 1× Red Velvet · 1× Dubai · candles · note</div>
       <div class="gift-footer">
-        <div class="gift-price">£245</div>
+        <div class="gift-price">£124</div>
         <button class="btn-primary" onclick="addBundle('birthday')">Send →</button>
       </div>
     </div>
@@ -121,10 +121,10 @@
       </div>
       <h3>The Sorry Tin</h3>
       <div class="occasion">an apology in 130g of dough</div>
-      <p class="gift-desc">Four cookies: the comforting ones. Two Originals and two Red Velvets. Comes with a blank card so you can write the actually-difficult bit yourself. We'll just deliver it.</p>
-      <div class="gift-includes"><strong>Inside</strong>2× Original · 2× Red Velvet · blank card · note</div>
+      <p class="gift-desc">Two cookies: the comforting ones. One Original and one Red Velvet. Comes with a blank card so you can write the actually-difficult bit yourself. We'll just deliver it.</p>
+      <div class="gift-includes"><strong>Inside</strong>1× Original · 1× Red Velvet · blank card · note</div>
       <div class="gift-footer">
-        <div class="gift-price">£124</div>
+        <div class="gift-price">£62</div>
         <button class="btn-primary" onclick="addBundle('sorry')">Send →</button>
       </div>
     </div>
@@ -147,10 +147,10 @@
       </div>
       <h3>The Welcome</h3>
       <div class="occasion">housewarming · new baby · new job</div>
-      <p class="gift-desc">Twelve cookies — three of each — for the people who've just landed somewhere new and won't stop receiving plants. The tin keeps. The cookies don't.</p>
-      <div class="gift-includes"><strong>Inside</strong>3× of every flavour (12 total) · note</div>
+      <p class="gift-desc">Six cookies — a generous mix of all four flavours — for the people who've just landed somewhere new and won't stop receiving plants. The tin keeps. The cookies don't.</p>
+      <div class="gift-includes"><strong>Inside</strong>2× Original · 2× Brownie · 1× Red Velvet · 1× Dubai · note</div>
       <div class="gift-footer">
-        <div class="gift-price">£365</div>
+        <div class="gift-price">£184</div>
         <button class="btn-primary" onclick="addBundle('welcome')">Send →</button>
       </div>
     </div>
@@ -171,10 +171,10 @@
       </div>
       <h3>The Thinking of You</h3>
       <div class="occasion">a tin in lieu of a phone call</div>
-      <p class="gift-desc">Four cookies, your choice or ours. For the friend you keep meaning to text. The colleague who lost a parent. The one going through it. Small but warm.</p>
-      <div class="gift-includes"><strong>Inside</strong>4× cookies, surprise mix · note</div>
+      <p class="gift-desc">Two cookies, your choice or ours. For the friend you keep meaning to text. The colleague who lost a parent. The one going through it. Small but warm.</p>
+      <div class="gift-includes"><strong>Inside</strong>1× Original · 1× Brownie · note</div>
       <div class="gift-footer">
-        <div class="gift-price">£124</div>
+        <div class="gift-price">£62</div>
         <button class="btn-primary" onclick="addBundle('thinking')">Send →</button>
       </div>
     </div>
@@ -194,11 +194,11 @@
         </svg>
       </div>
       <h3>The Grand Burk</h3>
-      <div class="occasion">team of 8–10 · serious celebration</div>
-      <p class="gift-desc">Twenty cookies, five of each, in our largest tin. Engagement, promotion, retirement, baby shower, big bonus. Built to be opened in a meeting room and finished on the way home.</p>
-      <div class="gift-includes"><strong>Inside</strong>5× of every flavour (20 total) · large tin · note</div>
+      <div class="occasion">small team · serious celebration</div>
+      <p class="gift-desc">Eight cookies, two of each, in our largest tin. Engagement, promotion, retirement, baby shower, big bonus. Built to be opened in a meeting room and finished on the way home.</p>
+      <div class="gift-includes"><strong>Inside</strong>2× of every flavour (8 total) · large tin · note</div>
       <div class="gift-footer">
-        <div class="gift-price">£605</div>
+        <div class="gift-price">£245</div>
         <button class="btn-primary" onclick="addBundle('grand')">Send →</button>
       </div>
     </div>
@@ -293,11 +293,11 @@
   // Add a curated bundle to the cart and open the cart drawer
   function addBundle(type){
     const bundles = {
-      birthday:  { original:2, brownie:2, redvelvet:2, dubai:2 },
-      sorry:     { original:2, brownie:0, redvelvet:2, dubai:0 },
-      welcome:   { original:3, brownie:3, redvelvet:3, dubai:3 },
-      thinking:  { original:1, brownie:1, redvelvet:1, dubai:1 },
-      grand:     { original:5, brownie:5, redvelvet:5, dubai:5 }
+      birthday:  { original:1, brownie:1, redvelvet:1, dubai:1 },
+      sorry:     { original:1, brownie:0, redvelvet:1, dubai:0 },
+      welcome:   { original:2, brownie:2, redvelvet:1, dubai:1 },
+      thinking:  { original:1, brownie:1, redvelvet:0, dubai:0 },
+      grand:     { original:2, brownie:2, redvelvet:2, dubai:2 }
     };
     const bundleNames = {
       birthday: 'The Birthday Burk', sorry: 'The Sorry Tin', welcome: 'The Welcome',
