@@ -1483,3 +1483,57 @@ html[data-theme="jul"] .seasonal-grid{ background: #EFE6D2; border-color: #0F4A2
 html[data-theme="jul"] .seasonal-marker{ color: #A82920 }
 html[data-theme="jul"] .seasonal-card{ border-color: #0F4A28 }
 html[data-theme="jul"] .seasonal-card .stamp{ background: #A82920; color: #F4E1A8 }
+
+/* ════════════════════════════════════════════════════════════════
+   SLIDING BANNER (marquee)
+   Sits between the value strip and shop. CSS-only, infinite loop.
+   Duplicate the content set inside .marquee-track so translateX(-50%)
+   produces a seamless loop. Theme-aware via [data-theme] selectors.
+   ════════════════════════════════════════════════════════════════ */
+.marquee{
+  background: var(--navy-deep); color: var(--cream-light);
+  padding: 18px 0; overflow: hidden; position: relative;
+  border-top: 1px solid rgba(240,230,208,.08);
+  border-bottom: 1px solid rgba(240,230,208,.08);
+}
+.marquee-track{
+  display: inline-flex; align-items: center;
+  white-space: nowrap; will-change: transform;
+  animation: marquee-scroll 42s linear infinite;
+}
+.marquee-track > span{
+  display: inline-flex; align-items: center;
+  font-family: 'Fraunces', serif; font-style: italic;
+  font-size: 22px; font-weight: 400;
+  letter-spacing: -.005em;
+  padding: 0 28px;
+}
+.marquee-track > span::after{
+  content: "·"; color: var(--mustard);
+  font-size: 28px; margin-left: 28px; opacity: .8;
+  font-style: normal;
+}
+.marquee:hover .marquee-track{ animation-play-state: paused }
+@keyframes marquee-scroll{
+  from { transform: translateX(0) }
+  to   { transform: translateX(-50%) }
+}
+@media (prefers-reduced-motion: reduce){
+  .marquee-track{ animation: none; transform: translateX(0) }
+}
+@media (max-width: 760px){
+  .marquee{ padding: 14px 0 }
+  .marquee-track > span{ font-size: 17px; padding: 0 18px }
+  .marquee-track > span::after{ font-size: 22px; margin-left: 18px }
+  .marquee-track{ animation-duration: 32s }
+}
+
+/* Theme overrides — marquee bg matches each occasion's topbar mood */
+html[data-theme="ramadan"] .marquee{ background: #0E3F2C }
+html[data-theme="eid"] .marquee{ background: linear-gradient(90deg, #2D1A2E 0%, #3D1F2A 100%) }
+html[data-theme="valentine"] .marquee{ background: #5A1A2D; color: #FCE8EE }
+html[data-theme="easter"] .marquee{ background: #2C5F3F; color: #FBF4E1 }
+html[data-theme="blackfriday"] .marquee{ background: #000; color: #FFD23F; text-transform: uppercase; letter-spacing: .12em }
+html[data-theme="blackfriday"] .marquee-track > span{ font-style: normal; font-weight: 700 }
+html[data-theme="blackfriday"] .marquee-track > span::after{ color: #fff }
+html[data-theme="jul"] .marquee{ background: #0F4A28; color: #F4E1A8 }
