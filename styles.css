@@ -113,15 +113,16 @@ nav.site-nav ul a.is-active{ color: var(--falu) }
 
 /* ───────── Homepage hero ───────── */
 .hero{
-  padding: 70px 5vw 90px;
-  display: grid; grid-template-columns: 1.1fr .9fr;
-  gap: 60px; align-items: center; position: relative;
+  padding: 90px 5vw 90px;
+  max-width: 820px; margin: 0 auto;
+  position: relative;
 }
 .hero::before{
-  content:""; position:absolute; top:50px; right:8%; width:260px; height:260px;
-  background: radial-gradient(circle, rgba(226,169,59,.4), transparent 65%);
-  z-index:0; filter: blur(20px);
+  content:""; position:absolute; top:30px; right:-40px; width:260px; height:260px;
+  background: radial-gradient(circle, rgba(226,169,59,.32), transparent 65%);
+  z-index:0; filter: blur(20px); pointer-events: none;
 }
+.hero > div{ position: relative; z-index: 1 }
 .eyebrow{
   display:inline-flex; align-items:center; gap:8px;
   font-family: 'Caveat', cursive; font-size: 22px; color: var(--falu);
@@ -183,31 +184,8 @@ h1.headline .fika-mark::after{
 .postcode-result.info{ color: var(--navy-soft) }
 .postcode-result .check{ display:inline-block; margin-right:6px }
 
-/* ───────── Hero illustration ───────── */
-.hero-art{
-  position: relative; aspect-ratio: 1/1; max-width: 540px; margin: 0 auto;
-  z-index: 2;
-}
-.hero-art svg.tin-svg{ width: 100%; height: 100%; filter: drop-shadow(0 30px 40px rgba(15,36,56,.35)) }
-.steam{
-  position:absolute; top:8%; left:50%; transform: translateX(-50%);
-  width: 60%; height: 30%; pointer-events:none;
-}
-.steam path{
-  stroke: rgba(255,255,255,.7); stroke-width: 2.2; fill: none;
-  stroke-linecap: round; opacity: 0;
-  animation: steamRise 4s ease-out infinite;
-}
-.steam path:nth-child(2){ animation-delay: 1.3s }
-.steam path:nth-child(3){ animation-delay: 2.6s }
-@keyframes steamRise{
-  0%{ opacity:0; transform: translateY(20px) scale(.8) }
-  20%{ opacity:.8 }
-  100%{ opacity:0; transform: translateY(-40px) scale(1.2) }
-}
 @media(max-width:900px){
-  .hero{ grid-template-columns: 1fr; gap: 40px; padding: 40px 5vw 60px }
-  .hero-art{ max-width: 380px; order: -1 }
+  .hero{ padding: 60px 5vw 60px }
 }
 
 /* ───────── Page hero (used on non-home pages) ───────── */
