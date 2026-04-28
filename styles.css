@@ -1395,3 +1395,91 @@ html[data-theme="jul"] .eyebrow svg path{ fill: #A82920 }
 html[data-theme="jul"] .hero::before{
   background: radial-gradient(circle, rgba(168,41,32,.22), transparent 65%);
 }
+
+/* ════════════════════════════════════════════════════════════════
+   SEASONAL SPOTLIGHT
+   Limited-edition product injected above the staple shop grid when
+   a theme is active. Theme-aware accent via [data-theme] selectors.
+   ════════════════════════════════════════════════════════════════ */
+.seasonal-spotlight{
+  max-width: 1200px; margin: 60px auto 0; padding: 0 5vw;
+  position: relative;
+}
+.seasonal-marker{
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'Newsreader', serif; font-size: 13px; font-weight: 600;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--falu); margin-bottom: 20px;
+}
+.seasonal-marker .dot{
+  display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--mustard); animation: pulse 1.6s ease-in-out infinite;
+}
+.seasonal-grid{
+  display: grid; grid-template-columns: 1fr 380px; gap: 60px;
+  align-items: stretch;
+  background: var(--cream-light);
+  border: 1.5px solid var(--navy);
+  box-shadow: 8px 8px 0 var(--navy);
+  border-radius: 4px;
+  padding: 50px 50px 50px 56px;
+  position: relative;
+}
+.seasonal-blurb{
+  display: flex; flex-direction: column; justify-content: center;
+}
+.seasonal-headline{
+  font-family: 'Fraunces', serif; font-weight: 500;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05; letter-spacing: -.02em;
+  color: var(--navy); margin-bottom: 18px;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.seasonal-detail{
+  font-size: 17px; line-height: 1.55; color: var(--navy-soft);
+  max-width: 440px;
+}
+.seasonal-card{
+  margin: 0 !important;
+  border: 1.5px solid var(--navy);
+  background: var(--paper);
+  position: relative; z-index: 1;
+}
+.seasonal-card .stamp{
+  background: var(--falu); color: var(--cream-light);
+}
+@media (max-width: 900px){
+  .seasonal-spotlight{ margin-top: 40px; padding: 0 5vw }
+  .seasonal-grid{
+    grid-template-columns: 1fr; gap: 32px;
+    padding: 32px 28px;
+    box-shadow: 5px 5px 0 var(--navy);
+  }
+  .seasonal-headline{ font-size: clamp(28px, 7vw, 38px) }
+}
+
+/* Per-theme palette tweaks for the spotlight */
+html[data-theme="ramadan"] .seasonal-grid{ background: #F4EFD9; border-color: #0E6B47; box-shadow: 8px 8px 0 #0E6B47 }
+html[data-theme="ramadan"] .seasonal-marker{ color: #0E6B47 }
+html[data-theme="ramadan"] .seasonal-card{ border-color: #0E6B47 }
+html[data-theme="ramadan"] .seasonal-card .stamp{ background: #0E6B47; color: #F4E1A8 }
+
+html[data-theme="eid"] .seasonal-grid{ background: #F8EDDB; border-color: #8B5A2D; box-shadow: 8px 8px 0 #5A2D3D }
+html[data-theme="eid"] .seasonal-marker{ color: #B8497A }
+html[data-theme="eid"] .seasonal-card{ border-color: #8B5A2D }
+html[data-theme="eid"] .seasonal-card .stamp{ background: #B8497A; color: #FBF4E1 }
+
+html[data-theme="valentine"] .seasonal-grid{ background: #FCEEF1; border-color: #B83A5B; box-shadow: 8px 8px 0 #B83A5B }
+html[data-theme="valentine"] .seasonal-marker{ color: #B83A5B }
+html[data-theme="valentine"] .seasonal-card{ border-color: #B83A5B }
+html[data-theme="valentine"] .seasonal-card .stamp{ background: #B83A5B; color: #FCE8EE }
+
+html[data-theme="easter"] .seasonal-grid{ background: #F4F0DD; border-color: #2C5F3F; box-shadow: 8px 8px 0 #2C5F3F }
+html[data-theme="easter"] .seasonal-marker{ color: #C95F7B }
+html[data-theme="easter"] .seasonal-card{ border-color: #2C5F3F }
+html[data-theme="easter"] .seasonal-card .stamp{ background: #C95F7B; color: #FBF4E1 }
+
+html[data-theme="jul"] .seasonal-grid{ background: #EFE6D2; border-color: #0F4A28; box-shadow: 8px 8px 0 #A82920 }
+html[data-theme="jul"] .seasonal-marker{ color: #A82920 }
+html[data-theme="jul"] .seasonal-card{ border-color: #0F4A28 }
+html[data-theme="jul"] .seasonal-card .stamp{ background: #A82920; color: #F4E1A8 }

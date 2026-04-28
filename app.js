@@ -4,32 +4,50 @@
    ════════════════════════════════════════════════════════════════ */
 
 const PRICES = {
+  // Year-round staples
   original: 30.00,
   brownie: 30.00,
   redvelvet: 30.00,
-  dubai: 30.00
+  dubai: 30.00,
+  // Seasonal SKUs — only buyable while their theme is active.
+  // Kept in PRICES year-round so a cart that already holds one
+  // (added during the theme) still renders correctly afterwards.
+  eidMamoul: 35.00,
+  ramadanDate: 35.00,
+  valentineLove: 55.00,
+  easterBunny: 35.00,
+  julTree: 35.00
 };
 const NAMES = {
   original: 'The Original',
   brownie: 'The Brownie',
   redvelvet: 'Red Velvet',
-  dubai: 'Dubai Chocolate'
+  dubai: 'Dubai Chocolate',
+  eidMamoul: "Eid Ma'amoul",
+  ramadanDate: 'Date Caramel',
+  valentineLove: 'The Love Tin',
+  easterBunny: 'Easter Bunny',
+  julTree: 'Christmas Tree'
 };
 const STORAGE_KEY = 'mjolk_cart_v1';
 const FREE_DELIVERY_THRESHOLD = 150;
 const DELIVERY = 4.50;
 
 /* ───────── Cart state ───────── */
+function emptyCart(){
+  const c = {};
+  for (const sku in PRICES) c[sku] = 0;
+  return c;
+}
 function loadCart(){
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      // Always ensure all SKU keys exist
-      return Object.assign({ original:0, brownie:0, redvelvet:0, dubai:0 }, parsed);
+      return Object.assign(emptyCart(), parsed);
     }
   } catch(e){ /* localStorage unavailable, fall through */ }
-  return { original:0, brownie:0, redvelvet:0, dubai:0 };
+  return emptyCart();
 }
 function saveCart(cart){
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(cart)) } catch(e){}
@@ -63,7 +81,7 @@ function removeFromCart(sku){
   renderAll();
 }
 function clearCart(){
-  cart = { original:0, brownie:0, redvelvet:0, dubai:0 };
+  cart = emptyCart();
   saveCart(cart);
   renderAll();
 }
@@ -337,9 +355,121 @@ function applyThemeContent(){
   }
 }
 
+/* ───────── Seasonal limited-edition products ─────────
+   Each themed period unlocks one extra SKU in the shop, shown as a
+   spotlight card injected above the staple grid on the homepage.
+   The SKU stays in PRICES/NAMES year-round so a cart added during
+   the theme still renders correctly afterwards. */
+const SEASONAL_PRODUCTS = {
+  eid: {
+    sku: 'eidMamoul',
+    stamp: 'Eid 2026',
+    name: "Eid Ma'amoul",
+    tagline: 'date-filled shortbread · powdered sugar',
+    desc: "Buttery semolina shortbread filled with sweet medjool date paste and dusted in powdered sugar. The traditional Eid pastry, baked the night before so it's still soft for the morning.",
+    allergens: 'wheat · milk · egg',
+    bannerLabel: 'Limited release · Eid 2026',
+    headline: "A date-filled ma'amoul, baked just for Eid.",
+    detail: 'Available Mar 20–22 only. Same-day across the West Midlands; next-day across the UK.',
+    svg: '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ms-mamoul" cx=".4" cy=".35"><stop offset="0%" stop-color="#F4E5C2"/><stop offset="60%" stop-color="#D9B97A"/><stop offset="100%" stop-color="#9C7838"/></radialGradient></defs><ellipse cx="100" cy="105" rx="80" ry="68" fill="url(#ms-mamoul)"/><g stroke="#5C3A1F" stroke-width="1.2" opacity=".5" fill="none"><line x1="40" y1="80" x2="160" y2="80"/><line x1="35" y1="100" x2="165" y2="100"/><line x1="40" y1="120" x2="160" y2="120"/><line x1="80" y1="50" x2="80" y2="150"/><line x1="100" y1="45" x2="100" y2="155"/><line x1="120" y1="50" x2="120" y2="150"/></g><path d="M 60 100 Q 80 90, 100 95 Q 120 100, 140 95" stroke="#3F2417" stroke-width="2" fill="none" opacity=".7"/><g fill="#FBF4E1" opacity=".75"><circle cx="65" cy="70" r="2"/><circle cx="80" cy="65" r="1.5"/><circle cx="105" cy="60" r="2"/><circle cx="130" cy="68" r="1.8"/><circle cx="145" cy="75" r="1.5"/><circle cx="60" cy="115" r="1.5"/><circle cx="135" cy="125" r="1.8"/><circle cx="92" cy="135" r="1.6"/></g></svg>'
+  },
+  ramadan: {
+    sku: 'ramadanDate',
+    stamp: 'Ramadan 2026',
+    name: 'Date Caramel',
+    tagline: 'medjool dates · salted caramel',
+    desc: 'Brown butter cookie with chunks of medjool date and a salted caramel swirl. Baked late afternoon and delivered before maghrib so it lands warm on the iftar table.',
+    allergens: 'wheat · milk · egg · soy',
+    bannerLabel: 'Limited release · Ramadan 2026',
+    headline: 'A date caramel cookie, for breaking the fast.',
+    detail: 'Available Feb 17 – Mar 19. Delivered before sunset across Birmingham and the West Midlands.',
+    svg: '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ms-date" cx=".4" cy=".4"><stop offset="0%" stop-color="#A6692D"/><stop offset="60%" stop-color="#6B3E15"/><stop offset="100%" stop-color="#3A1F0A"/></radialGradient></defs><circle cx="100" cy="100" r="82" fill="url(#ms-date)"/><circle cx="100" cy="100" r="82" fill="none" stroke="#3A1F0A" stroke-width="1.2" stroke-dasharray="2,3" opacity=".4"/><ellipse cx="75" cy="80" rx="14" ry="10" fill="#4A2818" transform="rotate(-15 75 80)"/><ellipse cx="115" cy="75" rx="12" ry="9" fill="#5C3018" transform="rotate(20 115 75)"/><ellipse cx="130" cy="115" rx="13" ry="9" fill="#3F1E0C"/><ellipse cx="80" cy="125" rx="11" ry="8" fill="#5C3018" transform="rotate(35 80 125)"/><path d="M 50 70 Q 100 90, 150 65 Q 130 100, 80 110 Q 110 130, 160 115" stroke="#D4A648" stroke-width="3" fill="none" stroke-linecap="round" opacity=".88"/><circle cx="62" cy="120" r="2.5" fill="#FBF4E1" opacity=".5"/><circle cx="142" cy="85" r="2" fill="#FBF4E1" opacity=".5"/></svg>'
+  },
+  valentine: {
+    sku: 'valentineLove',
+    stamp: 'Valentine 2026',
+    name: 'The Love Tin',
+    tagline: 'heart-shaped tin · two cookies',
+    desc: 'A keepsake heart-shaped tin holding two cookies of your choice, finished with a wax-sealed handwritten love note. Built for the doorstep ambush, not the dinner-reservation panic.',
+    allergens: 'wheat · milk · egg · soy',
+    bannerLabel: "Limited release · Valentine's 2026",
+    headline: 'The Love Tin — for the people you love.',
+    detail: 'Available Feb 1 – 14. Order by Feb 13 for Valentine\'s same-day delivery across Birmingham.',
+    svg: '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ms-heart" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#D67D8D"/><stop offset="100%" stop-color="#A02C4D"/></linearGradient></defs><path d="M 100 175 C 60 175, 30 145, 30 100 C 30 70, 50 55, 70 55 C 85 55, 95 65, 100 75 C 105 65, 115 55, 130 55 C 150 55, 170 70, 170 100 C 170 145, 140 175, 100 175 Z" fill="rgba(15,36,56,.25)" transform="translate(0, 8)"/><path d="M 100 170 C 60 170, 30 140, 30 95 C 30 65, 50 50, 70 50 C 85 50, 95 60, 100 70 C 105 60, 115 50, 130 50 C 150 50, 170 65, 170 95 C 170 140, 140 170, 100 170 Z" fill="url(#ms-heart)"/><path d="M 100 60 C 65 60, 38 80, 38 95 C 50 95, 60 95, 100 95 C 140 95, 150 95, 162 95 C 162 80, 135 60, 100 60 Z" fill="#B83A5B"/><circle cx="100" cy="125" r="22" fill="#E2A93B"/><text x="100" y="124" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-size="11" font-weight="700" fill="#5A1A2D">MJÖLK</text><text x="100" y="137" text-anchor="middle" font-family="Caveat, cursive" font-size="11" fill="#5A1A2D">älskar dig</text><rect x="92" y="150" width="16" height="18" fill="#FBF4E1"/><path d="M 92 150 L 80 168 L 92 162 Z M 108 150 L 120 168 L 108 162 Z" fill="#FBF4E1"/></svg>'
+  },
+  easter: {
+    sku: 'easterBunny',
+    stamp: 'Påsk 2026',
+    name: 'Easter Bunny',
+    tagline: 'butter shortbread · white chocolate tail',
+    desc: 'Golden brown-butter shortbread shaped like a bunny, with a white-chocolate cottontail and pastel sprinkles. Made the morning of Easter Saturday so the icing\'s still soft.',
+    allergens: 'wheat · milk · egg',
+    bannerLabel: 'Limited release · Påsk 2026',
+    headline: 'An Easter bunny in golden butter shortbread.',
+    detail: 'Available Mar 29 – Apr 5. Order by Easter Saturday for Sunday delivery across the Midlands.',
+    svg: '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="ms-bunny" cx=".4" cy=".4"><stop offset="0%" stop-color="#E5B97A"/><stop offset="60%" stop-color="#B5803A"/><stop offset="100%" stop-color="#7A5022"/></radialGradient></defs><ellipse cx="100" cy="138" rx="50" ry="38" fill="url(#ms-bunny)"/><circle cx="100" cy="80" r="30" fill="url(#ms-bunny)"/><ellipse cx="86" cy="42" rx="9" ry="22" fill="url(#ms-bunny)"/><ellipse cx="114" cy="42" rx="9" ry="22" fill="url(#ms-bunny)"/><ellipse cx="86" cy="46" rx="4" ry="16" fill="#E89DAB" opacity=".75"/><ellipse cx="114" cy="46" rx="4" ry="16" fill="#E89DAB" opacity=".75"/><circle cx="89" cy="76" r="3" fill="#2A1810"/><circle cx="111" cy="76" r="3" fill="#2A1810"/><ellipse cx="100" cy="88" rx="4" ry="2.8" fill="#E89DAB"/><path d="M 100 92 Q 96 96, 92 95" stroke="#2A1810" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M 100 92 Q 104 96, 108 95" stroke="#2A1810" stroke-width="1.2" fill="none" stroke-linecap="round"/><circle cx="142" cy="135" r="9" fill="#FBF4E1"/><circle cx="142" cy="135" r="9" fill="none" stroke="#E5C04A" stroke-width="1" stroke-dasharray="2,2" opacity=".55"/><rect x="70" y="125" width="6" height="2.5" fill="#E89DAB" rx="1" transform="rotate(20 73 126)"/><rect x="115" y="118" width="6" height="2.5" fill="#9DC4E8" rx="1" transform="rotate(-30 118 119)"/><rect x="85" y="158" width="6" height="2.5" fill="#E5C04A" rx="1" transform="rotate(15 88 159)"/><rect x="105" y="150" width="6" height="2.5" fill="#B8E89D" rx="1" transform="rotate(-15 108 151)"/></svg>'
+  },
+  jul: {
+    sku: 'julTree',
+    stamp: 'Jul 2026',
+    name: 'Christmas Tree',
+    tagline: 'spiced gingerbread · cardamom · gold star',
+    desc: "Pepparkakor's bigger sibling. Cardamom, ginger and dark muscovado, cut into a tree, iced with white-icing snow and finished with a gold-leaf star. Eaten by the fire, ideally.",
+    allergens: 'wheat · milk · egg',
+    bannerLabel: 'Limited release · Jul 2026',
+    headline: 'A spiced gingerbread tree, for Jul.',
+    detail: 'Available Dec 1 – 25. Order by Dec 23 for Christmas Eve delivery.',
+    svg: '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ms-tree" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2C7A48"/><stop offset="100%" stop-color="#0F4A28"/></linearGradient></defs><polygon points="100,30 70,75 130,75" fill="url(#ms-tree)"/><polygon points="100,55 60,110 140,110" fill="url(#ms-tree)"/><polygon points="100,90 50,150 150,150" fill="url(#ms-tree)"/><rect x="92" y="148" width="16" height="22" fill="#5C3818"/><polygon points="100,16 104,28 116,28 106,35 110,46 100,40 90,46 94,35 84,28 96,28" fill="#E2A93B"/><circle cx="85" cy="100" r="3" fill="#A82920"/><circle cx="115" cy="105" r="3" fill="#E2A93B"/><circle cx="100" cy="130" r="3" fill="#A82920"/><circle cx="75" cy="135" r="3" fill="#E2A93B"/><circle cx="125" cy="135" r="3" fill="#E2A93B"/><circle cx="90" cy="65" r="2.5" fill="#A82920"/><circle cx="110" cy="65" r="2.5" fill="#FBF4E1"/><path d="M 70 80 Q 100 85, 130 80" stroke="#FBF4E1" stroke-width="1.5" fill="none" opacity=".7"/><path d="M 60 115 Q 100 120, 140 115" stroke="#FBF4E1" stroke-width="1.5" fill="none" opacity=".7"/><path d="M 52 145 Q 100 150, 148 145" stroke="#FBF4E1" stroke-width="1.5" fill="none" opacity=".7"/></svg>'
+  }
+};
+
+function injectSeasonalSpotlight(){
+  const theme = window.MJOLK_THEME;
+  const product = theme && SEASONAL_PRODUCTS[theme];
+  if (!product) return;
+
+  // Only on the homepage (the shop section). On other pages we skip.
+  const shopSection = document.getElementById('shop');
+  if (!shopSection) return;
+
+  // Avoid double injection (e.g. if applied twice)
+  if (document.getElementById('seasonal-spotlight')) return;
+
+  const section = document.createElement('section');
+  section.id = 'seasonal-spotlight';
+  section.className = 'seasonal-spotlight';
+  section.innerHTML = `
+    <div class="seasonal-marker"><span class="dot"></span>${product.bannerLabel}</div>
+    <div class="seasonal-grid">
+      <div class="seasonal-blurb">
+        <h2 class="seasonal-headline">${product.headline}</h2>
+        <p class="seasonal-detail">${product.detail}</p>
+      </div>
+      <div class="cookie-card seasonal-card">
+        <span class="stamp">${product.stamp}</span>
+        <div class="cookie-art">${product.svg}</div>
+        <div class="cookie-name">${product.name}</div>
+        <div class="cookie-tagline">${product.tagline}</div>
+        <p class="cookie-desc">${product.desc}</p>
+        <div class="cookie-allergens"><strong>Allergens:</strong> ${product.allergens}</div>
+        <div class="qty-row">
+          <div class="qty-controls">
+            <button class="qty-btn" onclick="updateQty('${product.sku}', -1)">−</button>
+            <span class="qty-num" id="qty-${product.sku}">0</span>
+            <button class="qty-btn" onclick="updateQty('${product.sku}', 1)">+</button>
+          </div>
+          <div class="cookie-price">£${product.price ? product.price.toFixed(2) : PRICES[product.sku].toFixed(2)}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  shopSection.parentNode.insertBefore(section, shopSection);
+}
+
 /* ───────── Init ───────── */
 document.addEventListener('DOMContentLoaded', () => {
   applyThemeContent();
+  injectSeasonalSpotlight();
   highlightActiveNav();
   renderAll();
 
