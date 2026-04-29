@@ -138,6 +138,27 @@ nav.site-nav ul a.is-active{ color: var(--falu) }
   box-shadow: 0 30px 60px -20px rgba(15,36,56,.35), 0 12px 24px -12px rgba(15,36,56,.25);
   display: block;
 }
+.hero-stamp{
+  position: absolute;
+  bottom: 18px; right: 18px;
+  width: 68px; height: 68px;
+  background: var(--cream-light);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 14px rgba(15,36,56,.22), 0 1px 3px rgba(15,36,56,.12);
+  border: 1.5px solid rgba(142,45,31,.18);
+  transform: rotate(-6deg);
+  pointer-events: none;
+}
+.hero-stamp img{
+  width: 46px; height: 46px;
+  border-radius: 0;
+  box-shadow: none;
+}
+@media(max-width:600px){
+  .hero-stamp{ width: 54px; height: 54px; bottom: 12px; right: 12px }
+  .hero-stamp img{ width: 36px; height: 36px }
+}
 .eyebrow{
   display:inline-flex; align-items:center; gap:8px;
   font-family: 'Caveat', cursive; font-size: 22px; color: var(--falu);
