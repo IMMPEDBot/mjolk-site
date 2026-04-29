@@ -579,6 +579,41 @@ h2.section-title .it{ font-style: italic; color: var(--falu) }
   color: rgba(240,230,208,.55);
 }
 
+/* ── Fika finale (Falu-red close, mirrors the newsletter band) ── */
+.fika-finale{
+  background: var(--falu);
+  margin: 80px -5vw 0;
+  padding: 80px 5vw;
+  position: relative;
+  overflow: hidden;
+}
+.fika-finale::before,
+.fika-finale::after{
+  content:""; position: absolute; left: 0; right: 0; height: 6px;
+  background-image: repeating-linear-gradient(90deg,
+    var(--mustard) 0 12px, transparent 12px 24px);
+  opacity: .42;
+}
+.fika-finale::before{ top: 0 }
+.fika-finale::after{ bottom: 0 }
+
+.fika-finale .fika-quote{ color: var(--cream-light) }
+.fika-finale .fika-quote::before{ color: var(--mustard); opacity: .55 }
+.fika-finale .fika-quote .it{ color: var(--mustard) }
+.fika-finale .fika-quote-source{ color: rgba(240,230,208,.7) }
+
+.fika-finale .fika-close{ color: rgba(240,230,208,.92); margin: 40px auto 32px }
+.fika-finale .fika-close strong{ color: var(--mustard); font-weight: 600 }
+
+.fika-finale .fika-cta-row{ margin-top: 28px }
+.fika-finale .fika-cta{ background: var(--mustard); color: var(--navy-deep) }
+.fika-finale .fika-cta:hover{ background: var(--cream-light); transform: translateY(-2px) }
+.fika-finale .fika-cta-sub{ color: rgba(240,230,208,.78) }
+
+@media(max-width:760px){
+  .fika-finale{ margin: 60px -5vw 0; padding: 60px 5vw }
+}
+
 /* ───────── Recipe / reheating card ───────── */
 #reheat{
   background: var(--cream-deep);
