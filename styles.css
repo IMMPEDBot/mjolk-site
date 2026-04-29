@@ -23,6 +23,26 @@
 
 *{ box-sizing:border-box; margin:0; padding:0 }
 html{ scroll-behavior:smooth }
+
+/* ───────── Custom cursor: dala horse ─────────
+   Hotspot at the horse's nose (~23,7 in 32px space) so the click point
+   feels natural. Falls back to system cursor if the SVG can't load. */
+html, body{
+  cursor: url('cursor-dala.svg') 23 7, auto;
+}
+a, button, label, summary, [role="button"], [onclick],
+.cookie-card, .qty-btn, .cart-btn, .faq-q, .gift-card, .step,
+.btn-primary, .btn-secondary, .fika-cta, .stamp,
+.cart-line-btn, .cart-close, .mobile-menu-btn{
+  cursor: url('cursor-dala.svg') 23 7, pointer;
+}
+input:not([type="checkbox"]):not([type="radio"]):not([type="button"]):not([type="submit"]),
+textarea, [contenteditable="true"]{
+  cursor: text;
+}
+button:disabled, [disabled]{
+  cursor: not-allowed;
+}
 body{
   background: var(--cream);
   color: var(--navy);
