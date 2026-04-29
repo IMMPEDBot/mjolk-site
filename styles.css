@@ -1629,10 +1629,10 @@ html[data-theme="jul"] .seasonal-card .stamp{ background: #A82920; color: #F4E1A
    produces a seamless loop. Theme-aware via [data-theme] selectors.
    ════════════════════════════════════════════════════════════════ */
 .marquee{
-  background: var(--navy-deep); color: var(--cream-light);
+  background: var(--falu); color: var(--cream-light);
   padding: 18px 0; overflow: hidden; position: relative;
-  border-top: 1px solid rgba(240,230,208,.08);
-  border-bottom: 1px solid rgba(240,230,208,.08);
+  border-top: 1px solid rgba(240,230,208,.12);
+  border-bottom: 1px solid rgba(240,230,208,.12);
 }
 .marquee-track{
   display: inline-flex; align-items: center;
