@@ -18,6 +18,15 @@
   --paper: #FAF4E2;
   --ink: #0F1A28;
   --shadow: 0 14px 40px -12px rgba(15,36,56,.35);
+  --shadow-card-hover: 8px 12px 0 var(--navy);
+  --shadow-gift-hover: 6px 10px 0 var(--navy);
+  --shadow-hero: 0 30px 60px -20px rgba(15,36,56,.35), 0 12px 24px -12px rgba(15,36,56,.25);
+  --success: #1F6E3D;
+  --success-soft: rgba(31,110,61,.08);
+  --warning: var(--mustard-deep);
+  --info: var(--navy-soft);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
   --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.10 0 0 0 0 0.14 0 0 0 0 0.22 0 0 0 0.16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -55,7 +64,7 @@ body{
 }
 body::before{
   content:""; position:fixed; inset:0; z-index:1; pointer-events:none;
-  background-image: var(--grain); opacity:.55; mix-blend-mode: multiply;
+  background-image: var(--grain); opacity:.30; mix-blend-mode: multiply;
 }
 ::selection{ background: var(--falu); color: var(--cream-light) }
 
@@ -105,7 +114,8 @@ nav.site-nav ul a.is-active{ color: var(--falu) }
   padding: 10px 18px; border-radius: 999px; cursor: pointer;
   font-family: 'Newsreader', serif; font-size: 14px; font-weight: 500;
   display:flex; gap: 8px; align-items:center;
-  transition: transform .2s ease, background .2s ease;
+  transition: transform .2s var(--ease-out-expo), background .2s var(--ease-out-expo);
+  will-change: transform;
 }
 .cart-btn:hover{ background: var(--falu); transform: translateY(-1px) }
 .cart-count{
@@ -155,7 +165,7 @@ nav.site-nav ul a.is-active{ color: var(--falu) }
   width: 100%; height: 100%;
   object-fit: cover;
   border-radius: 6px;
-  box-shadow: 0 30px 60px -20px rgba(15,36,56,.35), 0 12px 24px -12px rgba(15,36,56,.25);
+  box-shadow: var(--shadow-hero);
   display: block;
 }
 .hero-stamp{
@@ -233,12 +243,30 @@ h1.headline .fika-mark::after{
 }
 .postcode-form button:hover{ background: var(--falu) }
 .postcode-result{
-  margin-top: 14px; font-size: 14.5px; min-height: 20px;
-  font-family: 'Newsreader', serif;
+  margin-top: 14px; min-height: 0;
+  font-family: 'Newsreader', serif; font-size: 14.5px; line-height: 1.5;
+  border-radius: 4px;
+  transition: opacity .2s var(--ease-out-expo), transform .2s var(--ease-out-expo);
 }
-.postcode-result.success{ color: #1F6E3D; font-weight: 500 }
-.postcode-result.info{ color: var(--navy-soft) }
-.postcode-result .check{ display:inline-block; margin-right:6px }
+.postcode-result:empty{ display: none }
+.postcode-result:not(:empty){
+  display: block; padding: 12px 14px;
+  border-left: 4px solid var(--info);
+  background: var(--cream);
+}
+.postcode-result.success{
+  color: var(--success); font-weight: 500;
+  border-left-color: var(--success);
+  background: var(--success-soft);
+}
+.postcode-result.info{
+  color: var(--navy-soft);
+  border-left-color: var(--mustard-deep);
+}
+.postcode-result .check{
+  display:inline-block; margin-right:6px;
+  font-weight: 600;
+}
 
 @media(max-width:900px){
   .hero{
@@ -311,7 +339,7 @@ section{ padding: 110px 5vw; position: relative; z-index: 2 }
 h2.section-title{
   font-family: 'Fraunces', serif; font-weight: 500;
   font-size: clamp(38px, 5vw, 68px);
-  line-height: 1; letter-spacing: -.02em; margin-bottom: 28px;
+  line-height: 1; letter-spacing: -.025em; margin-bottom: 28px;
   color: var(--navy);
 }
 h2.section-title .it{ font-style: italic; color: var(--falu) }
@@ -336,13 +364,14 @@ h2.section-title .it{ font-style: italic; color: var(--falu) }
 .cookie-card{
   background: var(--paper); border: 1.5px solid var(--navy);
   padding: 22px 22px 24px; position: relative;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition: transform .2s var(--ease-out-expo), box-shadow .2s var(--ease-out-expo);
   display:flex; flex-direction:column;
   border-radius: 4px;
+  will-change: transform;
 }
 .cookie-card:hover{
-  transform: translateY(-6px) rotate(-.5deg);
-  box-shadow: 8px 12px 0 var(--navy);
+  transform: translateY(-8px) rotate(-.5deg);
+  box-shadow: var(--shadow-card-hover);
 }
 .cookie-card .stamp{
   position:absolute; top:14px; right: 14px;
@@ -759,15 +788,16 @@ h2.section-title .it{ font-style: italic; color: var(--falu) }
 }
 .faq-q .plus{
   font-family: 'Fraunces', serif; font-style: italic; font-size: 28px;
-  color: var(--falu); transition: transform .25s; line-height: 1;
+  color: var(--falu); transition: transform .25s var(--ease-out-expo); line-height: 1;
   flex-shrink: 0;
 }
 .faq-item.open .faq-q .plus{ transform: rotate(45deg) }
 .faq-a{
-  max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s;
+  max-height: 0; overflow: hidden;
+  transition: max-height .4s var(--ease-out-quint), padding .25s var(--ease-out-expo);
   font-size: 16px; color: var(--navy-soft); line-height: 1.6;
 }
-.faq-item.open .faq-a{ max-height: 600px; padding-top: 12px }
+.faq-item.open .faq-a{ max-height: 800px; padding-top: 12px }
 
 /* ───────── Newsletter ───────── */
 .newsletter{
@@ -841,7 +871,9 @@ footer{
 .sticky-cta{
   position: fixed; bottom: 0; left: 0; right: 0;
   background: var(--navy-deep); color: var(--cream-light);
-  padding: 14px 20px; z-index: 30;
+  padding: 14px 20px;
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  z-index: 30;
   display: none; justify-content: space-between; align-items: center;
   box-shadow: 0 -10px 30px rgba(15,36,56,.35);
 }
@@ -1000,7 +1032,8 @@ footer{
   padding: 14px 28px; border-radius: 999px; cursor: pointer;
   font-family: 'Newsreader', serif; font-size: 15px; font-weight: 600;
   letter-spacing: .04em; text-decoration: none; display: inline-block;
-  transition: background .2s, transform .2s;
+  transition: background .2s var(--ease-out-expo), transform .2s var(--ease-out-expo);
+  will-change: transform;
 }
 .btn-primary:hover{ background: var(--falu); transform: translateY(-1px) }
 .btn-secondary{
@@ -1008,7 +1041,7 @@ footer{
   padding: 13px 26px; border-radius: 999px; cursor: pointer;
   font-family: 'Newsreader', serif; font-size: 15px; font-weight: 500;
   letter-spacing: .04em; text-decoration: none; display: inline-block;
-  transition: background .2s, color .2s;
+  transition: background .2s var(--ease-out-expo), color .2s var(--ease-out-expo);
 }
 .btn-secondary:hover{ background: var(--navy); color: var(--cream-light) }
 
@@ -1023,11 +1056,12 @@ footer{
   background: var(--paper); border: 1.5px solid var(--navy);
   padding: 28px; border-radius: 4px; position: relative;
   display: flex; flex-direction: column;
-  transition: transform .3s ease, box-shadow .3s ease;
+  transition: transform .2s var(--ease-out-expo), box-shadow .2s var(--ease-out-expo);
+  will-change: transform;
 }
 .gift-card:hover{
-  transform: translateY(-4px);
-  box-shadow: 6px 10px 0 var(--navy);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-gift-hover);
 }
 .gift-card .gift-tag{
   position: absolute; top: 14px; right: 14px;
@@ -1675,3 +1709,150 @@ html[data-theme="blackfriday"] .marquee{ background: #000; color: #FFD23F; text-
 html[data-theme="blackfriday"] .marquee-track > span{ font-style: normal; font-weight: 700 }
 html[data-theme="blackfriday"] .marquee-track > span::after{ color: #fff }
 html[data-theme="jul"] .marquee{ background: #0F4A28; color: #F4E1A8 }
+
+/* ════════════════════════════════════════════════════════════════
+   Canon polish — focus rings, scroll-reveal, scrollbars,
+   progress bar, empty states, reduced-motion (a11y)
+   ════════════════════════════════════════════════════════════════ */
+
+/* ───────── Focus rings (keyboard accessibility) ─────────
+   Matches WCAG 2.4.7 — visible focus indicator on every interactive
+   element. Uses 3px ring offset on cream so it reads as intentional. */
+:focus-visible{
+  outline: 2px solid var(--falu);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.cart-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.builder-cta:focus-visible,
+.fika-cta:focus-visible,
+.qty-btn:focus-visible,
+.cart-line-btn:focus-visible,
+.postcode-form button:focus-visible{
+  outline: 2px solid var(--mustard);
+  outline-offset: 3px;
+}
+.faq-q:focus-visible{
+  outline: 2px solid var(--falu);
+  outline-offset: 6px;
+}
+nav.site-nav ul a:focus-visible{
+  outline: 2px solid var(--falu);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+input:focus-visible, textarea:focus-visible{
+  outline: 2px solid var(--falu);
+  outline-offset: 1px;
+}
+
+/* ───────── Scroll-reveal: staggered card entrance ─────────
+   Cards rise + fade in. Each card delays 60ms × index via the
+   --reveal-delay custom prop (set inline in HTML on the parent
+   .shop-grid). Falls back to no-animation when prop absent. */
+@keyframes mjolk-reveal-up{
+  from { opacity: 0; transform: translateY(14px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+.shop-grid .cookie-card,
+.gift-grid .gift-card{
+  animation: mjolk-reveal-up .45s var(--ease-out-quint) both;
+}
+.shop-grid .cookie-card:nth-child(1),
+.gift-grid .gift-card:nth-child(1){ animation-delay: 0ms }
+.shop-grid .cookie-card:nth-child(2),
+.gift-grid .gift-card:nth-child(2){ animation-delay: 60ms }
+.shop-grid .cookie-card:nth-child(3),
+.gift-grid .gift-card:nth-child(3){ animation-delay: 120ms }
+.shop-grid .cookie-card:nth-child(4),
+.gift-grid .gift-card:nth-child(4){ animation-delay: 180ms }
+.shop-grid .cookie-card:nth-child(5),
+.gift-grid .gift-card:nth-child(5){ animation-delay: 240ms }
+.shop-grid .cookie-card:nth-child(6),
+.gift-grid .gift-card:nth-child(6){ animation-delay: 300ms }
+.shop-grid .cookie-card:nth-child(n+7),
+.gift-grid .gift-card:nth-child(n+7){ animation-delay: 360ms }
+
+/* ───────── Cart progress bar (free-delivery threshold) ─────────
+   Styles the bar rendered by app.js renderAll(). Fill animates from
+   prior width to new width on every cart update, reading as a
+   gentle "you're closer to free delivery" cue. */
+.progress-bar{
+  width: 100%; height: 6px;
+  background: rgba(27,58,91,.12);
+  border-radius: 999px; overflow: hidden;
+  margin-top: 10px;
+}
+.progress-bar-fill{
+  height: 100%; width: 0;
+  background: linear-gradient(90deg, var(--mustard), var(--mustard-deep));
+  border-radius: 999px;
+  transition: width .5s var(--ease-out-quint);
+}
+
+/* ───────── Empty cart drawer message ─────────
+   Lifts the "Your tin's empty" state from plain text to a quiet
+   styled card so the drawer feels intentional, not broken. */
+.cart-empty{
+  text-align: center; color: var(--navy-soft);
+  padding: 40px 24px; font-style: italic;
+  background: var(--cream); border-radius: 8px;
+  border: 1px dashed rgba(27,58,91,.22);
+  margin-top: 8px;
+}
+
+/* ───────── Tin builder empty line styling ───────── */
+.tin-summary .empty-line{
+  color: rgba(240,230,208,.55); font-style: italic;
+  padding: 8px 0;
+}
+
+/* ───────── Toast polish ─────────
+   Standardize toast easing to canon curve. */
+#toast{
+  transition: opacity .25s var(--ease-out-expo), transform .25s var(--ease-out-expo);
+}
+
+/* ───────── Inline-style replacements (from app.js) ───────── */
+.cart-line-qty-num{
+  font-family: 'Fraunces', serif; font-weight: 600;
+  min-width: 18px; text-align: center;
+}
+.tin-summary .qty-mark{ opacity: .5 }
+#delivery-progress strong{ color: var(--mustard) }
+
+/* ───────── Custom scrollbars (webkit) ─────────
+   Falls back to system scrollbars on Firefox; that's acceptable. */
+.cart-body::-webkit-scrollbar,
+body::-webkit-scrollbar{ width: 10px; height: 10px }
+.cart-body::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track{ background: var(--cream) }
+.cart-body::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb{
+  background: rgba(27,58,91,.35);
+  border-radius: 999px;
+  border: 2px solid var(--cream);
+}
+.cart-body::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover{ background: var(--navy) }
+
+/* ───────── Accessibility: prefers-reduced-motion ─────────
+   Respects the OS-level "reduce motion" setting. Strips animation
+   and transition timing across the site so the layout still works
+   but doesn't trigger vestibular sensitivities. */
+@media (prefers-reduced-motion: reduce){
+  *,
+  *::before,
+  *::after{
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee-track{ animation: none; transform: translateX(0) }
+  .topbar .pulse{ animation: none; opacity: 1 }
+  .shop-grid .cookie-card,
+  .gift-grid .gift-card{ animation: none; opacity: 1; transform: none }
+}

@@ -33,6 +33,26 @@ const STORAGE_KEY = 'mjolk_cart_v1';
 const FREE_DELIVERY_THRESHOLD = 80;
 const DELIVERY = 6.95;
 
+/* ───────── Shopify checkout config ─────────
+   Fill in STORE_DOMAIN with your myshopify.com URL and the numeric
+   variant ID for each SKU. Get variant IDs from Shopify admin:
+   Products → click product → in URL after /variants/ — or click
+   "More actions → View on storefront" and inspect the variant select. */
+const SHOPIFY = {
+  STORE_DOMAIN: 't6v1uq-mu.myshopify.com',  // ← Mjölk Cookies store
+  VARIANT_IDS: {
+    original:      53368499798280,  // The Original
+    brownie:       53368515559688,  // The Brownie
+    redvelvet:     53368518181128,  // Red Velvet
+    dubai:         53368520409352,  // Dubai Chocolate
+    eidMamoul:     57752109809928,  // Eid Ma'amoul
+    ramadanDate:   57752109842696,  // Date Caramel
+    valentineLove: 57752109908232,  // The Love Tin
+    easterBunny:   57752109941000,  // Easter Bunny
+    julTree:       57752109973768   // Christmas Tree
+  }
+};
+
 /* ───────── Cart state ───────── */
 function emptyCart(){
   const c = {};
@@ -115,7 +135,7 @@ function renderAll(){
         .filter(([_,q]) => q > 0)
         .map(([sku, q]) => `
           <div class="line">
-            <span>${NAMES[sku]} <span style="opacity:.5">× ${q}</span></span>
+            <span>${NAMES[sku]} <span class="qty-mark">× ${q}</span></span>
             <span>£${(PRICES[sku]*q).toFixed(2)}</span>
           </div>
         `).join('');
@@ -137,9 +157,9 @@ function renderAll(){
     const progress = Math.min(100, (sub / FREE_DELIVERY_THRESHOLD) * 100);
     progressFill.style.width = progress + '%';
     if (sub >= FREE_DELIVERY_THRESHOLD) {
-      progressText.innerHTML = '<strong style="color: var(--mustard)">✓ Same-day Birmingham delivery on us.</strong><div class="progress-bar"><div class="progress-bar-fill" style="width:100%"></div></div>';
+      progressText.innerHTML = '<strong>✓ Same-day Birmingham delivery on us.</strong><div class="progress-bar"><div class="progress-bar-fill" style="width:100%"></div></div>';
     } else if (count > 0) {
-      progressText.innerHTML = `Add <strong style="color: var(--mustard)">£${(FREE_DELIVERY_THRESHOLD-sub).toFixed(2)}</strong> more for free same-day Birmingham delivery.<div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>`;
+      progressText.innerHTML = `Add <strong>£${(FREE_DELIVERY_THRESHOLD-sub).toFixed(2)}</strong> more for free same-day Birmingham delivery.<div class="progress-bar"><div class="progress-bar-fill" style="width:${progress}%"></div></div>`;
     } else {
       progressText.innerHTML = `Free same-day Birmingham delivery on tins over £${FREE_DELIVERY_THRESHOLD}.<div class="progress-bar"><div class="progress-bar-fill" style="width:0%"></div></div>`;
     }
@@ -173,7 +193,7 @@ function renderAll(){
             </div>
             <div class="cart-line-controls">
               <button class="cart-line-btn" onclick="updateQty('${sku}', -1)" aria-label="Remove one">−</button>
-              <span style="font-family:'Fraunces',serif; font-weight:600; min-width:18px; text-align:center">${q}</span>
+              <span class="cart-line-qty-num">${q}</span>
               <button class="cart-line-btn" onclick="updateQty('${sku}', 1)" aria-label="Add one">+</button>
             </div>
             <div class="cart-line-price">£${(PRICES[sku]*q).toFixed(2)}</div>
@@ -274,15 +294,38 @@ function nextTuesday(){
   return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
 }
 
-/* ───────── Checkout (demo) ───────── */
+/* ───────── Checkout — redirects to Shopify cart with items pre-loaded ─────────
+   Builds a cart permalink like:
+   https://{store}.myshopify.com/cart/{variant_id}:{qty},{variant_id}:{qty}
+   Shopify takes over for cart review, address, payment, fulfilment. */
 function checkout(){
-  const count = totalCount();
-  if (count === 0) {
+  if (totalCount() === 0) {
     showToast('Your tin is empty — pick a cookie first.');
     return;
   }
+
+  const lines = Object.entries(cart)
+    .filter(([_, q]) => q > 0)
+    .map(([sku, q]) => {
+      const variantId = SHOPIFY.VARIANT_IDS[sku];
+      if (!variantId) {
+        console.error(`[checkout] No Shopify variant ID configured for SKU: ${sku}`);
+        return null;
+      }
+      return `${variantId}:${q}`;
+    })
+    .filter(Boolean);
+
+  if (lines.length === 0) {
+    showToast('Checkout is not set up yet — please contact us to order.');
+    console.error('[checkout] No variant IDs configured. Fill in SHOPIFY.VARIANT_IDS in app.js.');
+    return;
+  }
+
   showToast(`Heading to checkout · £${grandTotal().toFixed(2)}…`);
-  // In production: window.location.href = 'checkout.html';
+  // Clear local cart — Shopify owns it from here
+  saveCart(emptyCart());
+  window.location.href = `https://${SHOPIFY.STORE_DOMAIN}/cart/${lines.join(',')}`;
 }
 
 /* ───────── Toast ───────── */
