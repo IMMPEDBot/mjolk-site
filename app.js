@@ -5,10 +5,10 @@
 
 const PRICES = {
   // Year-round staples
-  original: 30.00,
-  brownie: 30.00,
-  redvelvet: 30.00,
-  dubai: 30.00,
+  original: 18.00,
+  brownie: 18.00,
+  redvelvet: 18.00,
+  dubai: 22.00,
   // Seasonal SKUs — only buyable while their theme is active.
   // Kept in PRICES year-round so a cart that already holds one
   // (added during the theme) still renders correctly afterwards.
@@ -30,7 +30,7 @@ const NAMES = {
   julTree: 'Christmas Tree'
 };
 const STORAGE_KEY = 'mjolk_cart_v1';
-const FREE_DELIVERY_THRESHOLD = 80;
+const FREE_DELIVERY_THRESHOLD = 60;
 const DELIVERY = 6.95;
 
 /* ───────── Shopify checkout config ─────────

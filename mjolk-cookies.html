@@ -816,7 +816,7 @@
 <!-- ───────── Top utility bar ───────── -->
 <div class="topbar">
   <span class="pulse"></span>
-  Order by <strong>11am Mon–Fri</strong> for <strong>same-day Birmingham</strong> · UK next-day · Free over <strong>£80</strong>
+  Order by <strong>11am Mon–Fri</strong> for <strong>same-day Birmingham</strong> · UK next-day · Free over <strong>£60</strong>
 </div>
 
 <!-- ───────── Nav ───────── -->
@@ -976,7 +976,7 @@
       <div class="value-item-num">ii.</div>
       <div>
         <h4>Same-day Birmingham, UK next-day</h4>
-        <p>Order by 11am Mon–Fri and a Birmingham courier brings the tin between 4 and 7pm. Everywhere else: next working day. Free over £80.</p>
+        <p>Order by 11am Mon–Fri and a Birmingham courier brings the tin between 4 and 7pm. Everywhere else: next working day. Free over £60.</p>
       </div>
     </div>
     <div class="value-item">
@@ -1002,8 +1002,8 @@
     <span class="section-eyebrow">Build your tin</span>
     <h2 class="section-title">Four cookies. <span class="it">Four loves.</span></h2>
     <p class="section-intro" style="margin-left:auto; margin-right:auto">
-      Each cookie is generously sized, weighs in around 130g, and is meant to be eaten warm —
-      pulled apart with your hands, ideally over a long fika.
+      Each cookie is generously sized at around 280g, fills its own tin, and is served warm —
+      eaten straight from the tin while the middle's still gooey, ideally over a long fika.
     </p>
   </div>
 
@@ -1047,7 +1047,7 @@
           <span class="qty-num" id="qty-original">0</span>
           <button class="qty-btn" onclick="updateQty('original', 1)">+</button>
         </div>
-        <div class="cookie-price">£30.00</div>
+        <div class="cookie-price">£18.00</div>
       </div>
     </div>
 
@@ -1088,7 +1088,7 @@
           <span class="qty-num" id="qty-brownie">0</span>
           <button class="qty-btn" onclick="updateQty('brownie', 1)">+</button>
         </div>
-        <div class="cookie-price">£30.00</div>
+        <div class="cookie-price">£18.00</div>
       </div>
     </div>
 
@@ -1130,7 +1130,7 @@
           <span class="qty-num" id="qty-redvelvet">0</span>
           <button class="qty-btn" onclick="updateQty('redvelvet', 1)">+</button>
         </div>
-        <div class="cookie-price">£30.00</div>
+        <div class="cookie-price">£18.00</div>
       </div>
     </div>
 
@@ -1173,7 +1173,7 @@
           <span class="qty-num" id="qty-dubai">0</span>
           <button class="qty-btn" onclick="updateQty('dubai', 1)">+</button>
         </div>
-        <div class="cookie-price">£30.00</div>
+        <div class="cookie-price">£22.00</div>
       </div>
     </div>
   </div>
@@ -1182,7 +1182,7 @@
   <div class="tin-builder">
     <div>
       <h3>Build your <span class="it">burk.</span></h3>
-      <p class="builder-hint">Mix and match — order one or a dozen. Free delivery on orders over £80 (any tier).</p>
+      <p class="builder-hint">Mix and match — order one or a dozen. Free delivery on orders over £60 (any tier).</p>
       <div class="tin-summary" id="tin-summary">
         <div class="empty-line">Your tin's empty — pick a cookie above to start.</div>
       </div>
@@ -1192,7 +1192,7 @@
         <div class="total-row grand"><span>Total</span><span id="builder-total">£0.00</span></div>
       </div>
       <div class="delivery-progress" id="delivery-progress">
-        Free delivery on tins over £80 — any tier.
+        Free delivery on tins over £60 — any tier.
         <div class="progress-bar"><div class="progress-bar-fill" id="progress-fill"></div></div>
       </div>
     </div>
@@ -1321,7 +1321,7 @@
 
     <div class="fika-cta-row">
       <a href="#shop" class="fika-cta">Send a tin, start a fika →</a>
-      <span class="fika-cta-sub">Free delivery on orders over £80 — any tier.</span>
+      <span class="fika-cta-sub">Free delivery on orders over £60 — any tier.</span>
     </div>
   </div>
 </section>
@@ -1413,8 +1413,8 @@
       <div class="faq-a">A Swedish institution. It means "to have coffee" — but really it's a daily pause for coffee, something baked, and a chat. Twice a day if you're doing it right. There's a whole section on this page about it. Our tins are built for it: one cookie, one cup of coffee, one long fika.</div>
     </div>
     <div class="faq-item" onclick="toggleFAQ(this)">
-      <div class="faq-q">Why is each cookie £30? <span class="plus">+</span></div>
-      <div class="faq-a">Because we mean it. These are large (≈130g), made in small batches the day they ship, with proper ingredients — single-origin Belgian milk chocolate, 70% Valrhona dark, real pistachio cream and kataifi for the Dubai cookie, two days' rest on every dough. They're priced like a serious gift, because mostly that's what they are. The keepsake tin is included.</div>
+      <div class="faq-q">Why is each cookie £18–£22? <span class="plus">+</span></div>
+      <div class="faq-a">Because each tin holds one proper 280g single-serve cookie — the kind that fills its own keepsake tin, not a snack-sized biscuit. Made in small batches the day it ships, with proper ingredients (single-origin Belgian milk chocolate, 70% Valrhona dark, Sicilian pistachio cream and kataifi for the Dubai cookie), two days' rest on every dough. At £18 (£22 for the Dubai) it's an everyday-treat price for a serious cookie. The keepsake tin is included.</div>
     </div>
     <div class="faq-item" onclick="toggleFAQ(this)">
       <div class="faq-q">Where do you deliver same-day? <span class="plus">+</span></div>
@@ -1552,7 +1552,7 @@
     dubai: 'Dubai Chocolate'
   };
   const cart = { original: 0, brownie: 0, redvelvet: 0, dubai: 0 };
-  const FREE_DELIVERY_THRESHOLD = 80;
+  const FREE_DELIVERY_THRESHOLD = 60;
   const DELIVERY = 6.95;
 
   function updateQty(sku, delta){
